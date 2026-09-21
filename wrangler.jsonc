@@ -11,12 +11,15 @@
   "d1_databases": [
     {
       "binding": "DB",
+      "database_name": "green-go-macau-db",
+      "database_id": "a48703df-9336-47a6-b536-ef00555d47d1",
       "migrations_dir": "migrations"
     }
   ],
-  "r2_buckets": [
+  "kv_namespaces": [
     {
-      "binding": "MEDIA"
+      "binding": "MEDIA",
+      "id": "6f219993911a4d598390f9cec7b1746b"
     }
   ],
   "vars": {

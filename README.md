@@ -5,7 +5,7 @@
 项目支持两种运行方式：
 
 - **本地版**：Node.js + SQLite + 本机图片目录。
-- **线上版**：Cloudflare Workers + D1 + R2，代码由 GitHub 管理。
+- **线上版**：Cloudflare Workers + D1 + KV，代码由 GitHub 管理。
 
 ## 功能
 
@@ -40,7 +40,7 @@ npm start
 | Workers Static Assets | 前台和后台静态文件 |
 | Worker `src/worker.js` | API、登录、内容管理和图片访问 |
 | D1 | 地点、文章、路线、投稿、管理员和会话 |
-| R2 | 后台和访客上传的图片 |
+| Workers KV | 后台和访客上传的图片 |
 | Turnstile | 公开投稿的人机验证 |
 
 线上后台地址为 `https://你的域名/admin`。首次进入时需要两项资料：
@@ -59,7 +59,7 @@ npm install
 npx wrangler login
 ```
 
-Wrangler 4.45 及以上版本能够根据 `wrangler.jsonc` 自动建立 D1 和 R2 资源。先部署一次以建立并绑定资源：
+Wrangler 4.45 及以上版本能够根据 `wrangler.jsonc` 自动建立 D1 和 KV 资源。先部署一次以建立并绑定资源：
 
 ```sh
 npx wrangler deploy
@@ -95,7 +95,7 @@ npm run cf:deploy
 - `CLOUDFLARE_ACCOUNT_ID`
 - `CLOUDFLARE_API_TOKEN`
 
-API Token 应只授予本项目所需的 Workers、D1 和 R2 权限。完成后可在 GitHub 的 **Actions → Deploy to Cloudflare → Run workflow** 手动上线。确认流程稳定后，再把 workflow 改为每次推送 `main` 自动部署。
+API Token 应只授予本项目所需的 Workers、D1 和 KV 权限。完成后可在 GitHub 的 **Actions → Deploy to Cloudflare → Run workflow** 手动上线。确认流程稳定后，再把 workflow 改为每次推送 `main` 自动部署。
 
 ## 数据迁移与示范资料
 
