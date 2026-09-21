@@ -72,7 +72,7 @@ async function upload(req,res,isAdmin){const publicSubmission=new URL(req.url,`h
 async function handler(req,res){const url=new URL(req.url,`http://${req.headers.host}`),pathname=url.pathname;try{
   if(pathname.startsWith('/api/')&&!checkOrigin(req))return fail(res,403,'請從本站頁面提交資料');
   if(pathname==='/api/health')return send(res,200,{ok:true});
-  if(pathname==='/api/config'&&req.method==='GET')return send(res,200,{turnstileSiteKey:''});
+  if(pathname==='/api/config'&&req.method==='GET')return send(res,200,{turnstileSiteKey:'',maptilerKey:process.env.MAPTILER_KEY||''});
   if(pathname==='/api/places'&&req.method==='GET')return send(res,200,db.prepare("SELECT * FROM places WHERE status='published' ORDER BY updated_at DESC").all().map(placeOut));
   if(pathname==='/api/articles'&&req.method==='GET')return send(res,200,db.prepare("SELECT * FROM articles WHERE status='published' ORDER BY updated_at DESC").all().map(articleOut));
   if(pathname==='/api/routes'&&req.method==='GET')return send(res,200,db.prepare("SELECT * FROM routes WHERE status='published' ORDER BY updated_at DESC").all().map(routeOut));

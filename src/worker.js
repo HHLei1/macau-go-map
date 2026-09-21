@@ -61,7 +61,7 @@ async function upload(request,env,isAdmin){const publicSubmission=new URL(reques
 async function api(request,env){const url=new URL(request.url),path=url.pathname;
   if(!sameOrigin(request))return error("请从本站页面提交资料",403);
   if(path==="/api/health")return json({ok:true,platform:"cloudflare"});
-  if(path==="/api/config"&&request.method==="GET")return json({turnstileSiteKey:env.TURNSTILE_SITE_KEY||""});
+  if(path==="/api/config"&&request.method==="GET")return json({turnstileSiteKey:env.TURNSTILE_SITE_KEY||"",maptilerKey:env.MAPTILER_KEY||""});
   if(path==="/api/places"&&request.method==="GET"){const rows=await env.DB.prepare("SELECT * FROM places WHERE status='published' ORDER BY updated_at DESC").all();return json(rows.results.map(placeOut))}
   if(path==="/api/articles"&&request.method==="GET"){const rows=await env.DB.prepare("SELECT * FROM articles WHERE status='published' ORDER BY updated_at DESC").all();return json(rows.results.map(articleOut))}
   if(path==="/api/routes"&&request.method==="GET"){const rows=await env.DB.prepare("SELECT * FROM routes WHERE status='published' ORDER BY updated_at DESC").all();return json(rows.results.map(routeOut))}

@@ -41,6 +41,7 @@ npm start
 | Worker `src/worker.js` | API、登录、内容管理和图片访问 |
 | D1 | 地点、文章、路线、投稿、管理员和会话 |
 | Workers KV | 后台和访客上传的图片 |
+| MapTiler Cloud | 正式底图与后台地址定位 |
 | Turnstile | 公开投稿的人机验证 |
 
 线上后台地址为 `https://你的域名/admin`。首次进入时需要两项资料：

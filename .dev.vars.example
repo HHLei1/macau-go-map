@@ -1,5 +1,7 @@
 ADMIN_SETUP_TOKEN=replace-with-a-long-random-one-time-token
 ADMIN_PEPPER=replace-with-a-different-long-random-secret
+# Browser-facing MapTiler key. Restrict it to your production hostname in MapTiler Cloud.
+MAPTILER_KEY=replace-with-your-domain-restricted-maptiler-key
 # Optional after creating a Cloudflare Turnstile widget:
 # TURNSTILE_SITE_KEY=replace-with-turnstile-site-key
 # TURNSTILE_SECRET=replace-with-turnstile-secret
