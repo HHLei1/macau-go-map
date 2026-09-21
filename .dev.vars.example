@@ -1,0 +1,5 @@
+ADMIN_SETUP_TOKEN=replace-with-a-long-random-one-time-token
+ADMIN_PEPPER=replace-with-a-different-long-random-secret
+# Optional after creating a Cloudflare Turnstile widget:
+# TURNSTILE_SITE_KEY=replace-with-turnstile-site-key
+# TURNSTILE_SECRET=replace-with-turnstile-secret

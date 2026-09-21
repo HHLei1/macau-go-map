@@ -1,0 +1,295 @@
+{
+  "places": [
+    {
+      "id": "afa",
+      "name": "阿發修鞋店",
+      "en": "A Fa Shoe Repair",
+      "cat": "修",
+      "area": "澳門半島",
+      "address": "亞婆井前地 12 號",
+      "tags": [
+        "減廢",
+        "社區",
+        "文化"
+      ],
+      "desc": "修補的不只是鞋，也是對物件的尊重。",
+      "story": "在這裡，每一雙鞋都有故事。阿發師傅把磨損的鞋底重新縫好，也讓熟悉的步伐繼續走過這座城市。",
+      "hours": "10:00 – 19:00（週一休息）",
+      "phone": "+853 6288 1234",
+      "lat": 22.1924,
+      "lng": 113.5395,
+      "img": "assets/shoe-repair.png"
+    },
+    {
+      "id": "market",
+      "name": "下環街市",
+      "en": "Barra Market",
+      "cat": "食",
+      "area": "澳門半島",
+      "address": "李加祿街",
+      "tags": [
+        "食物",
+        "社區"
+      ],
+      "desc": "在街坊的招呼聲裡，認識食物從哪裡來。",
+      "story": "從當季蔬菜到一家人的晚餐，街市是城市最親密的食物地圖。",
+      "hours": "07:00 – 19:00",
+      "lat": 22.1882,
+      "lng": 113.5363,
+      "img": "assets/macau-waterfront.png"
+    },
+    {
+      "id": "reuse",
+      "name": "再生工房",
+      "en": "Reuse Workshop",
+      "cat": "修",
+      "area": "路環",
+      "address": "路環蓮花海濱大馬路 88 號",
+      "tags": [
+        "重用",
+        "社區"
+      ],
+      "desc": "修復、重用，讓好物再出發。",
+      "story": "帶一件需要照顧的舊物來，和街坊一起找回它的下一段旅程。",
+      "hours": "11:00 – 18:00",
+      "lat": 22.1172,
+      "lng": 113.5591,
+      "img": "assets/shoe-repair.png"
+    },
+    {
+      "id": "garden",
+      "name": "望廈社區農圃",
+      "en": "Mong Ha Garden",
+      "cat": "去",
+      "area": "澳門半島",
+      "address": "望廈山公園旁",
+      "tags": [
+        "食物",
+        "自然與生物多樣性",
+        "社區"
+      ],
+      "desc": "在城裡留一小塊土，種出新的相遇。",
+      "story": "居民一起播種、澆水、分享收成，也分享彼此的生活。",
+      "hours": "全日開放",
+      "lat": 22.2112,
+      "lng": 113.5462,
+      "img": "assets/macau-waterfront.png"
+    },
+    {
+      "id": "bookshop",
+      "name": "邊度書店",
+      "en": "Where Bookshop",
+      "cat": "學",
+      "area": "澳門半島",
+      "address": "瘋堂斜巷 25 號",
+      "tags": [
+        "文化",
+        "社區"
+      ],
+      "desc": "從一本書開始，打開地方的想像。",
+      "story": "小書店收藏城市的提問，也為關心地方的人留下一張椅子。",
+      "hours": "12:00 – 19:00",
+      "lat": 22.1985,
+      "lng": 113.5494,
+      "img": "assets/macau-waterfront.png"
+    },
+    {
+      "id": "coast",
+      "name": "龍環葡韻濕地步道",
+      "en": "Taipa Wetland Walk",
+      "cat": "去",
+      "area": "氹仔",
+      "address": "龍環葡韻旁",
+      "tags": [
+        "水",
+        "自然與生物多樣性"
+      ],
+      "desc": "慢慢走，聽見濕地與城市一起呼吸。",
+      "story": "在木棧道上放慢腳步，觀察水鳥、植物和潮汐留下的線索。",
+      "hours": "全日開放",
+      "lat": 22.1535,
+      "lng": 113.5592,
+      "img": "assets/macau-waterfront.png"
+    },
+    {
+      "id": "repairbike",
+      "name": "阿明單車維修",
+      "en": "Ming Bicycle Repair",
+      "cat": "修",
+      "area": "澳門半島",
+      "address": "筷子基龍街 5 號",
+      "tags": [
+        "減廢",
+        "交通"
+      ],
+      "desc": "讓車輪繼續轉，也讓城市更宜居。",
+      "story": "一輛單車、一雙熟手，讓低碳的選擇更容易成為日常。",
+      "hours": "10:30 – 18:30",
+      "lat": 22.2065,
+      "lng": 113.5337,
+      "img": "assets/shoe-repair.png"
+    },
+    {
+      "id": "shop",
+      "name": "綠意雜貨",
+      "en": "Green Living Store",
+      "cat": "買",
+      "area": "氹仔",
+      "address": "官也街 36 號",
+      "tags": [
+        "減廢",
+        "食物"
+      ],
+      "desc": "把自備容器與少一點包裝，帶進每天的採買。",
+      "story": "一間小店，讓可重用和本地選擇變得自然。",
+      "hours": "11:00 – 20:00",
+      "lat": 22.1527,
+      "lng": 113.5552,
+      "img": "assets/macau-waterfront.png"
+    },
+    {
+      "id": "youth",
+      "name": "青年綠色行動站",
+      "en": "Youth Green Hub",
+      "cat": "參與",
+      "area": "澳門半島",
+      "address": "水坑尾街 42 號",
+      "tags": [
+        "青年",
+        "社區"
+      ],
+      "desc": "改變可以由校園開始，也可以從你開始。",
+      "story": "年輕人把想法帶到街區，邀請更多人一起動手。",
+      "hours": "週末活動見公告",
+      "lat": 22.1957,
+      "lng": 113.5472,
+      "img": "assets/macau-waterfront.png"
+    },
+    {
+      "id": "coastcare",
+      "name": "路環海岸守護",
+      "en": "Coloane Coast Care",
+      "cat": "參與",
+      "area": "路環",
+      "address": "黑沙海灘集合點",
+      "tags": [
+        "水",
+        "自然與生物多樣性",
+        "社區"
+      ],
+      "desc": "從一次海岸散步，開始照顧共同的家。",
+      "story": "一起認識海岸生態，撿拾不屬於海的東西。",
+      "hours": "依活動時間",
+      "lat": 22.1128,
+      "lng": 113.5767,
+      "img": "assets/macau-waterfront.png"
+    },
+    {
+      "id": "learn",
+      "name": "城市自然教室",
+      "en": "Urban Nature Classroom",
+      "cat": "學",
+      "area": "澳門半島",
+      "address": "白鴿巢公園附近",
+      "tags": [
+        "自然與生物多樣性",
+        "文化"
+      ],
+      "desc": "重新學習看見身邊的樹與鳥。",
+      "story": "從熟悉的街道開始，發現那些一直在身邊的自然鄰居。",
+      "hours": "依活動時間",
+      "lat": 22.2012,
+      "lng": 113.5374,
+      "img": "assets/macau-waterfront.png"
+    },
+    {
+      "id": "cafe",
+      "name": "街角本地食堂",
+      "en": "Neighborhood Kitchen",
+      "cat": "食",
+      "area": "氹仔",
+      "address": "地堡街 18 號",
+      "tags": [
+        "食物",
+        "社區"
+      ],
+      "desc": "一頓飯，連結本地食材與附近的人。",
+      "story": "用簡單而真誠的料理，讓食物的來源和人重新靠近。",
+      "hours": "11:30 – 20:00",
+      "lat": 22.1551,
+      "lng": 113.5558,
+      "img": "assets/macau-waterfront.png"
+    }
+  ],
+  "routes": [
+    {
+      "id": "food",
+      "n": "一餐飯從哪裡來？",
+      "text": "從街市、農圃到餐桌，認識食物與土地的故事。",
+      "ids": [
+        "market",
+        "garden",
+        "cafe",
+        "shop",
+        "learn",
+        "bookshop"
+      ],
+      "time": "約 2.5 小時",
+      "cat": "食物與土地"
+    },
+    {
+      "id": "daily",
+      "n": "澳門深度生活路線",
+      "text": "從觀賞、使用、體驗到回收，發現日常生活的可能。",
+      "ids": [
+        "afa",
+        "repairbike",
+        "reuse",
+        "shop",
+        "youth",
+        "bookshop",
+        "cafe"
+      ],
+      "time": "約 3 小時",
+      "cat": "日常與修補"
+    },
+    {
+      "id": "nature",
+      "n": "城市裡還有自然嗎？",
+      "text": "走進公園、濕地與海岸，尋找澳門的生態多樣性。",
+      "ids": [
+        "coast",
+        "coastcare",
+        "garden",
+        "learn",
+        "market",
+        "youth"
+      ],
+      "time": "約 3 小時",
+      "cat": "城市與自然"
+    }
+  ],
+  "stories": [
+    {
+      "n": "修補城市記憶的師傅",
+      "sub": "「舊物也有第二次生命。」",
+      "tag": "減廢",
+      "id": "afa",
+      "img": "assets/shoe-repair.png"
+    },
+    {
+      "n": "種出希望的小農圃",
+      "sub": "「土地教會我們珍惜。」",
+      "tag": "社區",
+      "id": "garden",
+      "img": "assets/macau-waterfront.png"
+    },
+    {
+      "n": "年輕人的綠色行動",
+      "sub": "「改變可以由校園開始。」",
+      "tag": "青年",
+      "id": "youth",
+      "img": "assets/macau-waterfront.png"
+    }
+  ]
+}

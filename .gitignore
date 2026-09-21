@@ -1,2 +1,9 @@
 .sites-runtime/
 work/
+data/*.sqlite*
+data/uploads/
+.wrangler/
+.dev.vars
+.env
+.DS_Store
+npm-debug.log*

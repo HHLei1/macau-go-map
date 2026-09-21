@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>綠門 GO · 1920px 本地預覽</title>
+  <style>
+    *{box-sizing:border-box}html{background:#e7ece8}body{margin:0;min-width:1920px;font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;color:#1c3d32}.bar{height:52px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;background:#103e31;color:#fff;font-size:13px;gap:16px}.bar strong{font-size:14px}.bar a{color:#e6f3e7;text-underline-offset:3px}.status{opacity:.78;white-space:nowrap}.stage{width:1920px}iframe{display:block;width:1920px;border:0;background:#fff;box-shadow:0 14px 44px #173b2c24}
+  </style>
+</head>
+<body>
+  <div class="bar"><strong>綠門 GO · 1920px 設計預覽</strong><span class="status">畫布 1920px · 顯示比例 100%</span><a href="./index.html" target="_blank" rel="noopener">開啟一般瀏覽版本 ↗</a></div>
+  <div class="stage" id="stage"><iframe id="site" src="./index.html" title="綠門 GO 網站，1920 像素畫布"></iframe></div>
+  <script>
+    const frame=document.getElementById('site');
+    function size(){frame.style.height=Math.max(1080,frame.contentDocument?.documentElement.scrollHeight||1080)+'px'}
+    frame.addEventListener('load',()=>{size();try{new ResizeObserver(size).observe(frame.contentDocument.documentElement);new MutationObserver(size).observe(frame.contentDocument.body,{childList:true,subtree:true,attributes:true})}catch(e){}setTimeout(size,500)});
+    size();
+  </script>
+</body>
+</html>
