@@ -1,3 +1,4 @@
+import {defaultSite,normalizeSite} from "../site-defaults.js";
 const JSON_HEADERS={"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"};
 const encoder=new TextEncoder();
 const now=()=>new Date().toISOString();
@@ -18,14 +19,15 @@ function sameOrigin(request){if(!["POST","PUT","PATCH","DELETE"].includes(reques
 async function bodyJSON(request){const size=Number(request.headers.get("content-length")||0);if(size>1_000_000)throw Object.assign(new Error("资料过大"),{status:413});try{return await request.json()}catch{throw Object.assign(new Error("资料格式不正确"),{status:400})}}
 function imagePath(value){const path=clean(value,500);return /^(assets\/[\w.-]+\.(?:png|jpg|jpeg|webp)|\/media\/[a-f0-9-]+\.(?:png|jpg|webp))$/i.test(path)?path:""}
 
-const placeOut=p=>({id:p.id,name:p.name,en:p.en,cat:p.cat,area:p.area,address:p.address,lat:p.lat,lng:p.lng,tags:parseArray(p.tags),desc:p.description,story:p.story,hours:p.hours,phone:p.phone,img:p.image,status:p.status,created_at:p.created_at,updated_at:p.updated_at});
-const articleOut=a=>({id:a.id,title:a.title,subtitle:a.subtitle,body:a.body,category:a.category,place_id:a.place_id,img:a.image,status:a.status,created_at:a.created_at,updated_at:a.updated_at});
-const routeOut=r=>({id:r.id,n:r.title,text:r.description,cat:r.category,ids:parseArray(r.place_ids),time:r.duration,img:r.image,status:r.status,created_at:r.created_at,updated_at:r.updated_at});
+const placeOut=p=>({id:p.id,name:p.name,en:p.en,cat:p.cat,area:p.area,address:p.address,address_en:p.address_en||"",lat:p.lat,lng:p.lng,tags:parseArray(p.tags),desc:p.description,desc_en:p.description_en||"",story:p.story,story_en:p.story_en||"",hours:p.hours,hours_en:p.hours_en||"",phone:p.phone,img:p.image,status:p.status,created_at:p.created_at,updated_at:p.updated_at});
+const articleOut=a=>({id:a.id,title:a.title,title_en:a.title_en||"",subtitle:a.subtitle,subtitle_en:a.subtitle_en||"",body:a.body,body_en:a.body_en||"",category:a.category,category_en:a.category_en||"",place_id:a.place_id,img:a.image,status:a.status,created_at:a.created_at,updated_at:a.updated_at});
+const routeOut=r=>({id:r.id,n:r.title,n_en:r.title_en||"",text:r.description,text_en:r.description_en||"",cat:r.category,cat_en:r.category_en||"",ids:parseArray(r.place_ids),time:r.duration,time_en:r.duration_en||"",img:r.image,status:r.status,created_at:r.created_at,updated_at:r.updated_at});
+const siteOut=row=>{try{return normalizeSite(JSON.parse(row?.content||"{}"))}catch{return defaultSite()}};
 const submissionOut=s=>({...s,tags:parseArray(s.tags)});
 
-function validatePlace(input){const name=clean(input.name,120),cat=clean(input.cat,30),area=clean(input.area,50),address=clean(input.address,200),lat=Number(input.lat),lng=Number(input.lng);if(!name||!cat||!area||!address||!Number.isFinite(lat)||!Number.isFinite(lng)||lat<22||lat>22.25||lng<113.45||lng>113.65)throw Object.assign(new Error("请填写名称、分类、地区、地址，并在澳门范围内选择标点"),{status:400});return{name,en:clean(input.en,120),cat,area,address,lat,lng,tags:JSON.stringify(array(input.tags)),description:clean(input.desc,500),story:clean(input.story,10000),hours:clean(input.hours,100),phone:clean(input.phone,100),image:imagePath(input.img)||"assets/macau-waterfront.png",status:input.status==="published"?"published":"draft"}}
-function validateArticle(input){const title=clean(input.title,160);if(!title)throw Object.assign(new Error("请填写文章标题"),{status:400});return{title,subtitle:clean(input.subtitle,300),body:clean(input.body,40000),category:clean(input.category,50),place_id:clean(input.place_id,80)||null,image:imagePath(input.img),status:input.status==="published"?"published":"draft"}}
-function validateRoute(input){const title=clean(input.n||input.title,160);if(!title)throw Object.assign(new Error("请填写路线名称"),{status:400});return{title,description:clean(input.text||input.description,1000),category:clean(input.cat||input.category,60),place_ids:JSON.stringify(array(input.ids||input.place_ids)),duration:clean(input.time||input.duration,80),image:imagePath(input.img||input.image),status:input.status==="published"?"published":"draft"}}
+function validatePlace(input){const name=clean(input.name,120),cat=clean(input.cat,30),area=clean(input.area,50),address=clean(input.address,200),lat=Number(input.lat),lng=Number(input.lng);if(!name||!cat||!area||!address||!Number.isFinite(lat)||!Number.isFinite(lng)||lat<22||lat>22.25||lng<113.45||lng>113.65)throw Object.assign(new Error("请填写名称、分类、地区、地址，并在澳门范围内选择标点"),{status:400});return{name,en:clean(input.en,120),cat,area,address,address_en:clean(input.address_en,200),lat,lng,tags:JSON.stringify(array(input.tags)),description:clean(input.desc,500),description_en:clean(input.desc_en,500),story:clean(input.story,10000),story_en:clean(input.story_en,10000),hours:clean(input.hours,100),hours_en:clean(input.hours_en,100),phone:clean(input.phone,100),image:imagePath(input.img)||"assets/macau-waterfront.png",status:input.status==="published"?"published":"draft"}}
+function validateArticle(input){const title=clean(input.title,160);if(!title)throw Object.assign(new Error("请填写文章标题"),{status:400});return{title,title_en:clean(input.title_en,160),subtitle:clean(input.subtitle,300),subtitle_en:clean(input.subtitle_en,300),body:clean(input.body,40000),body_en:clean(input.body_en,40000),category:clean(input.category,50),category_en:clean(input.category_en,50),place_id:clean(input.place_id,80)||null,image:imagePath(input.img),status:input.status==="published"?"published":"draft"}}
+function validateRoute(input){const title=clean(input.n||input.title,160);if(!title)throw Object.assign(new Error("请填写路线名称"),{status:400});return{title,title_en:clean(input.n_en||input.title_en,160),description:clean(input.text||input.description,1000),description_en:clean(input.text_en||input.description_en,1000),category:clean(input.cat||input.category,60),category_en:clean(input.cat_en||input.category_en,60),place_ids:JSON.stringify(array(input.ids||input.place_ids)),duration:clean(input.time||input.duration,80),duration_en:clean(input.time_en||input.duration_en,80),image:imagePath(input.img||input.image),status:input.status==="published"?"published":"draft"}}
 
 async function passwordHash(password,salt,pepper,iterations=10000){const material=await crypto.subtle.importKey("raw",encoder.encode(password+pepper),"PBKDF2",false,["deriveBits"]);return hex(await crypto.subtle.deriveBits({name:"PBKDF2",hash:"SHA-256",salt:encoder.encode(salt),iterations},material,256))}
 async function hmac(value,secret){const key=await crypto.subtle.importKey("raw",encoder.encode(secret),{name:"HMAC",hash:"SHA-256"},false,["sign"]);return hex(await crypto.subtle.sign("HMAC",key,encoder.encode(value)))}
@@ -37,20 +39,20 @@ async function authenticated(request,env){const token=cookie(request,"gg_session
 async function saveRecord(request,env,kind,id){const input=await bodyJSON(request),stamp=now(),creating=request.method==="POST",recordId=creating?crypto.randomUUID():id;if(!recordId)return error("缺少资料 ID");
   if(kind==="places"){
     const p=validatePlace(input);
-    if(creating)await env.DB.prepare("INSERT INTO places(id,name,en,cat,area,address,lat,lng,tags,description,story,hours,phone,image,status,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)").bind(recordId,p.name,p.en,p.cat,p.area,p.address,p.lat,p.lng,p.tags,p.description,p.story,p.hours,p.phone,p.image,p.status,stamp,stamp).run();
-    else{const result=await env.DB.prepare("UPDATE places SET name=?,en=?,cat=?,area=?,address=?,lat=?,lng=?,tags=?,description=?,story=?,hours=?,phone=?,image=?,status=?,updated_at=? WHERE id=?").bind(p.name,p.en,p.cat,p.area,p.address,p.lat,p.lng,p.tags,p.description,p.story,p.hours,p.phone,p.image,p.status,stamp,recordId).run();if(!result.meta.changes)return error("找不到这个地点",404)}
+    if(creating)await env.DB.prepare("INSERT INTO places(id,name,en,cat,area,address,address_en,lat,lng,tags,description,description_en,story,story_en,hours,hours_en,phone,image,status,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)").bind(recordId,p.name,p.en,p.cat,p.area,p.address,p.address_en,p.lat,p.lng,p.tags,p.description,p.description_en,p.story,p.story_en,p.hours,p.hours_en,p.phone,p.image,p.status,stamp,stamp).run();
+    else{const result=await env.DB.prepare("UPDATE places SET name=?,en=?,cat=?,area=?,address=?,address_en=?,lat=?,lng=?,tags=?,description=?,description_en=?,story=?,story_en=?,hours=?,hours_en=?,phone=?,image=?,status=?,updated_at=? WHERE id=?").bind(p.name,p.en,p.cat,p.area,p.address,p.address_en,p.lat,p.lng,p.tags,p.description,p.description_en,p.story,p.story_en,p.hours,p.hours_en,p.phone,p.image,p.status,stamp,recordId).run();if(!result.meta.changes)return error("找不到这个地点",404)}
     return json(placeOut(await env.DB.prepare("SELECT * FROM places WHERE id=?").bind(recordId).first()),creating?201:200);
   }
   if(kind==="articles"){
     const a=validateArticle(input);
-    if(creating)await env.DB.prepare("INSERT INTO articles(id,title,subtitle,body,category,place_id,image,status,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?)").bind(recordId,a.title,a.subtitle,a.body,a.category,a.place_id,a.image,a.status,stamp,stamp).run();
-    else{const result=await env.DB.prepare("UPDATE articles SET title=?,subtitle=?,body=?,category=?,place_id=?,image=?,status=?,updated_at=? WHERE id=?").bind(a.title,a.subtitle,a.body,a.category,a.place_id,a.image,a.status,stamp,recordId).run();if(!result.meta.changes)return error("找不到这篇文章",404)}
+    if(creating)await env.DB.prepare("INSERT INTO articles(id,title,title_en,subtitle,subtitle_en,body,body_en,category,category_en,place_id,image,status,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)").bind(recordId,a.title,a.title_en,a.subtitle,a.subtitle_en,a.body,a.body_en,a.category,a.category_en,a.place_id,a.image,a.status,stamp,stamp).run();
+    else{const result=await env.DB.prepare("UPDATE articles SET title=?,title_en=?,subtitle=?,subtitle_en=?,body=?,body_en=?,category=?,category_en=?,place_id=?,image=?,status=?,updated_at=? WHERE id=?").bind(a.title,a.title_en,a.subtitle,a.subtitle_en,a.body,a.body_en,a.category,a.category_en,a.place_id,a.image,a.status,stamp,recordId).run();if(!result.meta.changes)return error("找不到这篇文章",404)}
     return json(articleOut(await env.DB.prepare("SELECT * FROM articles WHERE id=?").bind(recordId).first()),creating?201:200);
   }
   if(kind==="routes"){
     const r=validateRoute(input);
-    if(creating)await env.DB.prepare("INSERT INTO routes(id,title,description,category,place_ids,duration,image,status,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?)").bind(recordId,r.title,r.description,r.category,r.place_ids,r.duration,r.image,r.status,stamp,stamp).run();
-    else{const result=await env.DB.prepare("UPDATE routes SET title=?,description=?,category=?,place_ids=?,duration=?,image=?,status=?,updated_at=? WHERE id=?").bind(r.title,r.description,r.category,r.place_ids,r.duration,r.image,r.status,stamp,recordId).run();if(!result.meta.changes)return error("找不到这条路线",404)}
+    if(creating)await env.DB.prepare("INSERT INTO routes(id,title,title_en,description,description_en,category,category_en,place_ids,duration,duration_en,image,status,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)").bind(recordId,r.title,r.title_en,r.description,r.description_en,r.category,r.category_en,r.place_ids,r.duration,r.duration_en,r.image,r.status,stamp,stamp).run();
+    else{const result=await env.DB.prepare("UPDATE routes SET title=?,title_en=?,description=?,description_en=?,category=?,category_en=?,place_ids=?,duration=?,duration_en=?,image=?,status=?,updated_at=? WHERE id=?").bind(r.title,r.title_en,r.description,r.description_en,r.category,r.category_en,r.place_ids,r.duration,r.duration_en,r.image,r.status,stamp,recordId).run();if(!result.meta.changes)return error("找不到这条路线",404)}
     return json(routeOut(await env.DB.prepare("SELECT * FROM routes WHERE id=?").bind(recordId).first()),creating?201:200);
   }
   return error("不支持此资料类型",404);
@@ -62,6 +64,7 @@ async function api(request,env){const url=new URL(request.url),path=url.pathname
   if(!sameOrigin(request))return error("请从本站页面提交资料",403);
   if(path==="/api/health")return json({ok:true,platform:"cloudflare"});
   if(path==="/api/config"&&request.method==="GET")return json({turnstileSiteKey:env.TURNSTILE_SITE_KEY||"",maptilerKey:env.MAPTILER_KEY||""});
+  if(path==="/api/site"&&request.method==="GET"){const row=await env.DB.prepare("SELECT content FROM site_settings WHERE id=1").first();return json(siteOut(row))}
   if(path==="/api/places"&&request.method==="GET"){const rows=await env.DB.prepare("SELECT * FROM places WHERE status='published' ORDER BY updated_at DESC").all();return json(rows.results.map(placeOut))}
   if(path==="/api/articles"&&request.method==="GET"){const rows=await env.DB.prepare("SELECT * FROM articles WHERE status='published' ORDER BY updated_at DESC").all();return json(rows.results.map(articleOut))}
   if(path==="/api/routes"&&request.method==="GET"){const rows=await env.DB.prepare("SELECT * FROM routes WHERE status='published' ORDER BY updated_at DESC").all();return json(rows.results.map(routeOut))}
@@ -76,6 +79,10 @@ async function api(request,env){const url=new URL(request.url),path=url.pathname
   if(path.startsWith("/api/admin/")){
     if(!isAdmin)return error("请先登入后台",401);
     const parts=path.split("/").filter(Boolean),kind=parts[2],id=parts[3];
+    if(kind==="site"){
+      if(request.method==="GET"){const row=await env.DB.prepare("SELECT content FROM site_settings WHERE id=1").first();return json(siteOut(row))}
+      if(request.method==="PUT"){const content=normalizeSite(await bodyJSON(request));await env.DB.prepare("INSERT INTO site_settings(id,content,updated_at) VALUES(1,?,?) ON CONFLICT(id) DO UPDATE SET content=excluded.content,updated_at=excluded.updated_at").bind(JSON.stringify(content),now()).run();return json(content)}
+    }
     if(["places","articles","routes"].includes(kind)){
       if(request.method==="GET"&&!id){const rows=await env.DB.prepare(`SELECT * FROM ${kind} ORDER BY updated_at DESC`).all();const convert=kind==="places"?placeOut:kind==="articles"?articleOut:routeOut;return json(rows.results.map(convert))}
       if(request.method==="POST"||request.method==="PUT")return saveRecord(request,env,kind,id);
