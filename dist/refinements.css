@@ -858,7 +858,7 @@ h1,h2,h3,.brand strong,.category-copy strong,.story-horizontal strong { font-fam
 .map-stage .leaflet-control-zoom a.leaflet-disabled { color:#c3c7cd;background:#f8f9fa;cursor:default; }
 .map-stage .leaflet-control-zoom a:focus-visible { outline:2px solid var(--accent-600);outline-offset:-4px; }
 #leaflet-map { background:#f3ece3; }
-#leaflet-map .leaflet-maplibre-gl { pointer-events:none; }
+#leaflet-map .leaflet-gl-layer { pointer-events:none; }
 @media(hover:hover) and (pointer:fine) {
  .map-stage .leaflet-control-zoom a:hover:not(.leaflet-disabled) { background:var(--accent-50);color:var(--accent-800); }
  .map-stage .leaflet-control-zoom a.is-pressed:hover { background:var(--accent-100); }

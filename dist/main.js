@@ -69,7 +69,8 @@ function initMap(list){
  if(window.maplibregl&&L.maplibreGL&&window.GreenGoMapStyle){
   GreenGoMapStyle.create(key,state.lang).then(style=>{
    if(map!==currentMap)return;
-   const layer=L.maplibreGL({style,interactive:false,padding:.15,attribution:key?'© <a href="https://www.maptiler.com/copyright/" target="_blank" rel="noopener">MapTiler</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>':'<a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'}).addTo(currentMap);
+   const attribution=key?'© <a href="https://www.maptiler.com/copyright/" target="_blank" rel="noopener">MapTiler</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>':'<a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> © <a href="https://openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>';
+   const layer=L.maplibreGL({style,interactive:false,padding:.15,attributionControl:{customAttribution:attribution}}).addTo(currentMap);
    const vectorMap=layer.getMaplibreMap();
    vectorMap.once('load',()=>{if(map===currentMap)el.dataset.basemap='calm-vector'});
    vectorMap.once('error',()=>{if(map===currentMap&&!vectorMap.isStyleLoaded()){currentMap.removeLayer(layer);fallback()}});
