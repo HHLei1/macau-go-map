@@ -1,0 +1,48 @@
+{
+  "generator": "Built-in image_gen",
+  "purpose": "Complementary category palettes instead of a uniform teal cast",
+  "edits": [
+    {
+      "id": "waterfront",
+      "prompt": "Edit this image by changing its color palette only. Preserve the exact subjects, positions, composition, aspect ratio and simple flat illustration style. Keep anonymous flat faces and clean shapes. Do not add text, patterns, realism or new objects. We need a coordinated multi-color website illustration collection, not an all-teal collection. Replace the overall mint/teal cast with a Mediterranean-inspired Macau waterfront palette: clear powder-blue sky and cornflower-blue water, buildings in apricot, terracotta and buttery yellow, charcoal-blue railings, a coral skirt and muted denim backpack. Keep actual foliage natural muted olive/sage green, but green must cover less than one quarter of the image. The large sea and sky should read blue, not cyan or green.",
+      "original": "dist/assets/flat-waterfront.png",
+      "web": "dist/assets/flat-waterfront.webp"
+    },
+    {
+      "id": "cafe",
+      "prompt": "Edit this image by changing its color palette only. Preserve the exact subjects, positions, composition, aspect ratio and simple flat illustration style. Keep anonymous flat faces and clean shapes. Do not add text, patterns, realism or new objects. We need a coordinated multi-color website illustration collection, not an all-teal collection. A warm food palette: soft apricot and peach background, terracotta/coral apron on the cook, deep navy shirt on the diner, off-white crockery, natural warm wood table, powder-blue water jug. Keep vegetables naturally green and orange; small plants muted olive only. Eliminate teal clothing, mint walls and green shadows.",
+      "original": "dist/assets/flat-cafe.png",
+      "web": "dist/assets/flat-cafe.webp"
+    },
+    {
+      "id": "shop",
+      "prompt": "Edit this image by changing its color palette only. Preserve the exact subjects, positions, composition, aspect ratio and simple flat illustration style. Keep anonymous flat faces and clean shapes. Do not add text, patterns, realism or new objects. We need a coordinated multi-color website illustration collection, not an all-teal collection. A warm golden grocery palette: pale butter-yellow and warm white walls, honey/oak shelves, clear lightly blue glass jars, mustard reusable tote, dusty coral blouse and deep charcoal/navy trousers. Small plants may stay muted olive. No teal clothing, teal containers, mint walls or green overall cast.",
+      "original": "dist/assets/flat-shop.png",
+      "web": "dist/assets/flat-shop.webp"
+    },
+    {
+      "id": "afa",
+      "prompt": "Edit this image by changing its color palette only. Preserve the exact subjects, positions, composition, aspect ratio and simple flat illustration style. Keep anonymous flat faces and clean shapes. Do not add text, patterns, realism or new objects. We need a coordinated multi-color website illustration collection, not an all-teal collection. A cool/warm repair-workshop palette: pale mist-blue walls and window frame, muted denim-blue apron, navy tools, natural chestnut leather shoes, warm oak shelves and ochre workbench. Skin stays natural peach, shirt off-white. Any small plants may stay sage but no mint walls or teal clothing/tools. Blues and warm browns should lead.",
+      "original": "dist/assets/flat-afa.png",
+      "web": "dist/assets/flat-afa.webp"
+    },
+    {
+      "id": "reuse",
+      "prompt": "Edit this image by changing its color palette only. Preserve the exact subjects, positions, composition, aspect ratio and simple flat illustration style. Keep anonymous flat faces and clean shapes. Do not add text, patterns, realism or new objects. We need a coordinated multi-color website illustration collection, not an all-teal collection. A practical workshop palette: pale mist-blue/gray walls, dusty denim-blue and ochre aprons, natural warm wood stool and workbench, a muted coral lampshade, navy tools, cream neutral shelving. Only tiny real plants can stay muted green. Remove the turquoise and green overall cast.",
+      "original": "dist/assets/flat-reuse.png",
+      "web": "dist/assets/flat-reuse.webp"
+    },
+    {
+      "id": "youth",
+      "prompt": "Edit this image by changing its color palette only. Preserve the exact subjects, positions, composition, aspect ratio and simple flat illustration style. Keep anonymous flat faces and clean shapes. Do not add text, patterns, realism or new objects. We need a coordinated multi-color website illustration collection, not an all-teal collection. A youthful balanced palette: pale lavender and warm off-white room, one dusty periwinkle vest, one muted coral shirt, one golden ochre accent, dark navy hair and trousers, recycling box in muted blue, reusable bottle in soft violet. Actual small plant can stay sage. The room and clothes must no longer be teal or mint.",
+      "original": "dist/assets/flat-youth.png",
+      "web": "dist/assets/flat-youth.webp"
+    },
+    {
+      "id": "bookshop",
+      "prompt": "Edit this image by changing its color palette only. Preserve the exact subjects, positions, composition, aspect ratio and simple flat illustration style. Keep anonymous flat faces and clean shapes. Do not add text, patterns, realism or new objects. We need a coordinated multi-color website illustration collection, not an all-teal collection. A literary palette: pale lavender and warm off-white walls, bookshelf in dusty plum/indigo with books in coral, ochre, cream and periwinkle, reader in soft lilac and dark navy, warm wood chair, ochre cup. Keep the actual small plant muted olive. No teal shelves, clothing or mint wall cast.",
+      "original": "dist/assets/flat-bookshop.png",
+      "web": "dist/assets/flat-bookshop.webp"
+    }
+  ]
+}

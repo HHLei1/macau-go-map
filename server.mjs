@@ -38,7 +38,7 @@ if(db.prepare('SELECT COUNT(*) AS count FROM places').get().count===0&&db.prepar
   const addArticle=db.prepare(`INSERT INTO articles(id,title,title_en,subtitle,subtitle_en,body,body_en,category,category_en,place_id,image,status,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`);
   const stamp=now();
   for(const p of seed.places)addPlace.run(p.id,p.name,p.en||'',p.cat,p.area,p.address,p.lat,p.lng,JSON.stringify(p.tags||[]),p.desc||'',p.story||'',p.hours||'',p.phone||'',p.img||'','published',stamp,stamp);
-  for(const r of seed.routes)addRoute.run(r.id,r.n,r.text,r.cat,JSON.stringify(r.ids||[]),r.time||'','','published',stamp,stamp);
+  for(const r of seed.routes)addRoute.run(r.id,r.n,r.text,r.cat,JSON.stringify(r.ids||[]),r.time||'',r.img||'','published',stamp,stamp);
   for(const s of seed.stories){const place=seed.places.find(p=>p.id===s.id);addArticle.run(`story-${s.id}`,s.n,s.n_en||'',s.sub,s.sub_en||'',place?.story||s.sub,s.body_en||'',s.tag,s.tag_en||'',s.id,s.img||'','published',stamp,stamp)}
 }
 

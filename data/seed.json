@@ -18,7 +18,7 @@
       "phone": "+853 6288 1234",
       "lat": 22.1924,
       "lng": 113.5395,
-      "img": "assets/shoe-repair.png"
+      "img": "assets/flat-afa.webp"
     },
     {
       "id": "market",
@@ -36,7 +36,7 @@
       "hours": "07:00 – 19:00",
       "lat": 22.1882,
       "lng": 113.5363,
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-market.webp"
     },
     {
       "id": "reuse",
@@ -54,7 +54,7 @@
       "hours": "11:00 – 18:00",
       "lat": 22.1172,
       "lng": 113.5591,
-      "img": "assets/shoe-repair.png"
+      "img": "assets/flat-reuse.webp"
     },
     {
       "id": "garden",
@@ -73,7 +73,7 @@
       "hours": "全日開放",
       "lat": 22.2112,
       "lng": 113.5462,
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-garden.webp"
     },
     {
       "id": "bookshop",
@@ -91,7 +91,7 @@
       "hours": "12:00 – 19:00",
       "lat": 22.1985,
       "lng": 113.5494,
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-bookshop.webp"
     },
     {
       "id": "coast",
@@ -109,7 +109,7 @@
       "hours": "全日開放",
       "lat": 22.1535,
       "lng": 113.5592,
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-coast.webp"
     },
     {
       "id": "repairbike",
@@ -127,7 +127,7 @@
       "hours": "10:30 – 18:30",
       "lat": 22.2065,
       "lng": 113.5337,
-      "img": "assets/shoe-repair.png"
+      "img": "assets/flat-repairbike.webp"
     },
     {
       "id": "shop",
@@ -145,7 +145,7 @@
       "hours": "11:00 – 20:00",
       "lat": 22.1527,
       "lng": 113.5552,
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-shop.webp"
     },
     {
       "id": "youth",
@@ -163,7 +163,7 @@
       "hours": "週末活動見公告",
       "lat": 22.1957,
       "lng": 113.5472,
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-youth.webp"
     },
     {
       "id": "coastcare",
@@ -182,7 +182,7 @@
       "hours": "依活動時間",
       "lat": 22.1128,
       "lng": 113.5767,
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-coastcare.webp"
     },
     {
       "id": "learn",
@@ -200,7 +200,7 @@
       "hours": "依活動時間",
       "lat": 22.2012,
       "lng": 113.5374,
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-learn.webp"
     },
     {
       "id": "cafe",
@@ -218,7 +218,7 @@
       "hours": "11:30 – 20:00",
       "lat": 22.1551,
       "lng": 113.5558,
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-cafe.webp"
     }
   ],
   "routes": [
@@ -235,7 +235,8 @@
         "bookshop"
       ],
       "time": "約 2.5 小時",
-      "cat": "食物與土地"
+      "cat": "食物與土地",
+      "img": "assets/flat-market.webp"
     },
     {
       "id": "daily",
@@ -251,7 +252,8 @@
         "cafe"
       ],
       "time": "約 3 小時",
-      "cat": "日常與修補"
+      "cat": "日常與修補",
+      "img": "assets/flat-reuse.webp"
     },
     {
       "id": "nature",
@@ -266,7 +268,8 @@
         "youth"
       ],
       "time": "約 3 小時",
-      "cat": "城市與自然"
+      "cat": "城市與自然",
+      "img": "assets/flat-coast.webp"
     }
   ],
   "stories": [
@@ -279,7 +282,7 @@
       "tag_en": "Waste Reduction",
       "tag": "減廢",
       "id": "afa",
-      "img": "assets/shoe-repair.png"
+      "img": "assets/flat-afa.webp"
     },
     {
       "n": "種出希望的小農圃",
@@ -290,7 +293,7 @@
       "tag_en": "Community",
       "tag": "社區",
       "id": "garden",
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-garden.webp"
     },
     {
       "n": "年輕人的綠色行動",
@@ -301,7 +304,7 @@
       "tag_en": "Youth",
       "tag": "青年",
       "id": "youth",
-      "img": "assets/macau-waterfront.png"
+      "img": "assets/flat-youth.webp"
     }
   ]
 }
