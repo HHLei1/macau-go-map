@@ -867,3 +867,6 @@ h1,h2,h3,.brand strong,.category-copy strong,.story-horizontal strong { font-fam
  .map-stage .leaflet-control-zoom a,.map-stage .leaflet-control-zoom a>svg { transition:none; }
  .map-stage .leaflet-control-zoom a.is-pressed>svg,.map-stage .leaflet-control-zoom a:active>svg { transform:none; }
 }
+@media(min-width:761px) {
+ .map-place-panel { top:140px;max-height:calc(100% - 164px); }
+}
