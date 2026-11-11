@@ -113,7 +113,7 @@ function fitMapResults(list){
 }
 function initMap(list){
  const el=$('#leaflet-map');if(!el||!window.L)return;
- map=L.map(el,{zoomControl:false,dragging:!window.matchMedia('(pointer:coarse), (max-width:760px)').matches,touchZoom:false,scrollWheelZoom:!window.matchMedia('(pointer:coarse), (max-width:760px)').matches,wheelDebounceTime:30,wheelPxPerZoomLevel:100,minZoom:3,maxZoom:19,zoomAnimation:!reducedMotion(),fadeAnimation:!reducedMotion()}).setView([22.178,113.548],13);
+ map=L.map(el,{zoomControl:false,dragging:true,touchZoom:true,scrollWheelZoom:!window.matchMedia('(pointer:coarse), (max-width:760px)').matches,wheelDebounceTime:30,wheelPxPerZoomLevel:100,minZoom:3,maxZoom:19,zoomAnimation:!reducedMotion(),fadeAnimation:!reducedMotion()}).setView([22.178,113.548],13);
  const currentMap=map,key=state.config.maptilerKey;el.dataset.zoom=String(currentMap.getZoom());
  const zoom=L.control.zoom({position:'topright',zoomInText:I('plus',20),zoomOutText:I('minus',20),zoomInTitle:state.lang==='en'?'Zoom in':'放大地圖',zoomOutTitle:state.lang==='en'?'Zoom out':'縮小地圖'}).addTo(map);
  const controls=zoom.getContainer();

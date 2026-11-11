@@ -897,9 +897,6 @@ h1,h2,h3,.brand strong,.category-copy strong,.story-horizontal strong { font-fam
  .map-place-panel { max-height:calc(100% - 150px);bottom:76px; }
  .back-to-top { right:16px;bottom:max(16px,env(safe-area-inset-bottom));width:44px;height:44px;min-height:44px; }
 }
-@media(pointer:coarse),(max-width:760px) {
- #leaflet-map.leaflet-container { touch-action:pan-y!important; }
-}
 @media(prefers-reduced-motion:reduce) { .back-to-top { transition:none;transform:none; } }
 
 .place-photo-missing {
