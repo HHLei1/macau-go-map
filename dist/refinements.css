@@ -903,3 +903,53 @@ h1,h2,h3,.brand strong,.category-copy strong,.story-horizontal strong { font-fam
  display:grid;place-items:center;padding:12px;text-align:center;
  background:var(--forest-50);color:var(--muted);font-size:13px;line-height:1.45;
 }
+
+.map-sheet-handle,.map-sheet-results { display:none; }
+@media(max-width:760px) {
+ .map-with-sheet {
+  --sheet-peek:66px;
+  --map-height:max(380px,calc(100dvh - var(--header-h)));
+  --sheet-open:calc(var(--map-height) * .54);
+  display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;min-height:0;
+  height:var(--map-height);
+  background:#f3ece3;
+ }
+ .map-with-sheet .map-stage { grid-row:1;height:100%;min-height:0; }
+ .map-with-sheet .map-filters {
+  grid-row:2;position:relative;z-index:2;display:flex;flex-direction:column;
+  height:var(--sheet-peek);min-height:0;padding:0;overflow:hidden;
+  border:1px solid var(--line);border-radius:22px 22px 0 0;
+  background:var(--paper);box-shadow:0 -6px 24px #253b3017;
+  transition:height 200ms var(--ease-out);
+ }
+ .map-with-sheet.sheet-expanded .map-filters { height:var(--sheet-open); }
+ .map-with-sheet.sheet-dragging .map-filters {
+  height:clamp(var(--sheet-peek),var(--sheet-drag-height),var(--sheet-open));transition:none;
+ }
+ .map-sheet-handle {
+  display:flex;align-items:center;gap:9px;width:100%;flex:none;height:var(--sheet-peek);
+  padding:16px 20px 4px;border:0;background:transparent;text-align:left;
+  font-weight:700;touch-action:none;user-select:none;position:relative;
+ }
+ .map-sheet-handle:focus-visible { outline-offset:-3px; }
+ .map-sheet-grip {
+  position:absolute;left:50%;top:9px;transform:translateX(-50%);
+  width:36px;height:4px;border-radius:4px;background:#9ba7a1;
+ }
+ .map-sheet-count {
+  padding:2px 8px;border-radius:999px;background:var(--accent-50);
+  color:var(--accent-800);font-size:12px;font-variant-numeric:tabular-nums;
+ }
+ .map-with-sheet #map-sheet-content {
+  min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  padding:0 16px max(16px,env(safe-area-inset-bottom));visibility:hidden;
+ }
+ .map-with-sheet:is(.sheet-expanded,.sheet-dragging) #map-sheet-content { visibility:visible; }
+ .map-sheet-results { display:grid;gap:8px;padding-top:10px; }
+ .map-sheet-results .place-card>img,.map-sheet-results .place-photo-missing { height:78px;border-radius:8px; }
+ .map-with-sheet .map-legend { display:none; }
+ .map-with-sheet .map-place-panel { bottom:12px;max-height:calc(100% - 24px); }
+}
+@media(max-width:760px) and (prefers-reduced-motion:reduce) {
+ .map-with-sheet .map-filters { transition:none; }
+}

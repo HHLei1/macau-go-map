@@ -50,15 +50,64 @@ function chip(kind,value,label=value){const cat=kind==='cat'?mapCategories[value
 function mapFilters(list){const missing=list.filter(p=>!hasCoordinates(p)).length,cats=['全部',...Object.keys(mapCategories)],areas=['全部','澳門半島','氹仔'];return `<div class="view-tabs"><button class="${state.view==='map'?'active':''}" data-view="map" aria-pressed="${state.view==='map'}">${I('map')} ${T().nav[1]}</button><button class="${state.view==='list'?'active':''}" data-view="list" aria-pressed="${state.view==='list'}">${I('list')} ${state.lang==='en'?'List':'列表'}</button></div><form class="map-search" data-map-search><input name="q" value="${esc(state.query)}" aria-label="${T().search}" placeholder="${T().search}"><button aria-label="${state.lang==='en'?'Search':'搜尋'}">${I('search')}</button></form><button class="map-filter-toggle" data-action="toggle-map-filters" aria-controls="map-filter-options" aria-expanded="${state.mapFiltersOpen}"><span>${state.lang==='en'?'Filter places':'篩選地點'}</span>${I(state.mapFiltersOpen?'close':'filters',20)}</button><div id="map-filter-options" class="map-filter-options ${state.mapFiltersOpen?'is-open':''}">${[[cats,'cat',T().filters[0]],[areas,'area',T().filters[2]]].map(([a,k,title])=>`<div class="filter-group"><h3>${title}</h3><div>${a.map(v=>chip(k,v,v==='全部'?T().all:mapLabel(v))).join('')}</div></div>`).join('')}</div><div class="map-result-summary"><p class="result-count" role="status" aria-live="polite">${list.length} ${T().places}${state.view==='map'&&missing?` · ${state.lang==='en'?`${missing} without map pins`:`${missing} 筆待定位`}`:''}</p><button class="map-reset" data-action="reset-map">${state.lang==='en'?'Clear filters':'清除篩選'}</button></div>`}
 function mapLegend(){return `<div class="map-legend" aria-label="${state.lang==='en'?'Map categories':'標點顏色分類'}">${Object.entries(mapCategories).map(([key,c])=>`<span style="--category-color:${c.color}"><i class="category-icon">${I(c.icon,16)}</i>${esc(mapLabel(key))}</span>`).join('')}</div>`}
 function disposeMap(){if(map){map.remove();map=null}markerLayer=null;placeMarkers.clear()}
-function mapPage({fit=false}={}){const list=filteredPlaces();if(map&&$('#leaflet-map')&&state.view==='map'){$('.map-filters').innerHTML=mapFilters(list);updateMapMarkers(list);if(fit)fitMapResults(list);return}disposeMap();layout(`<main class="map-page"><div class="map-shell"><aside class="map-filters">${mapFilters(list)}</aside><section class="map-stage ${state.view==='list'?'list-mode':''}">${state.view==='map'?`<div id="leaflet-map"></div>${mapLegend()}<aside class="map-place-panel" aria-label="${state.lang==='en'?'Selected place':'地點資訊'}" aria-hidden="true" inert></aside><div class="map-empty" ${list.length?'hidden':''}>${state.lang==='en'?'No places match these filters. Try another category.':'暫時沒有符合的地點，試試其他分類。'}</div>`:`<div class="place-list">${list.map(placeCard).join('')||`<p class="map-list-empty">${state.lang==='en'?'No matching places.':'暫時沒有符合的地點。'}</p>`}</div>`}</section></div></main>`,{showFooter:false});if(state.view==='map')initMap(list)}
+function mapSheetContent(list){
+ const empty=state.lang==='en'?'No matching places.':'暫時沒有符合的地點。';
+ return `${mapFilters(list)}<div class="map-sheet-results">${list.map(placeCard).join('')||`<p>${empty}</p>`}</div>`;
+}
+function initMapSheet(){
+ const shell=$('.map-shell');
+ const sheet=$('.map-filters',shell);
+ const handle=$('.map-sheet-handle',shell);
+ const content=$('#map-sheet-content',shell);
+ let expanded=false,drag=null,ignoreClick=false;
+
+ function settle(next){
+  expanded=next;
+  shell.classList.toggle('sheet-expanded',expanded);
+  shell.classList.remove('sheet-dragging');
+  shell.style.removeProperty('--sheet-drag-height');
+  handle.setAttribute('aria-expanded',String(expanded));
+  content.scrollTop=0;
+ }
+
+ handle.addEventListener('pointerdown',event=>{
+  if(!event.isPrimary||event.button!==0)return;
+  ignoreClick=false;
+  drag={id:event.pointerId,y:event.clientY,height:sheet.offsetHeight,moved:false};
+  handle.setPointerCapture(event.pointerId);
+ });
+ handle.addEventListener('pointermove',event=>{
+  if(drag?.id!==event.pointerId)return;
+  const distance=drag.y-event.clientY;
+  if(!drag.moved&&Math.abs(distance)<7)return;
+  drag.moved=true;
+  shell.classList.add('sheet-dragging');
+  shell.style.setProperty('--sheet-drag-height',`${drag.height+distance}px`);
+ });
+ function endDrag(event){
+  if(drag?.id!==event.pointerId)return;
+  const distance=drag.y-event.clientY;
+  ignoreClick=drag.moved;
+  drag=null;
+  settle(event.type==='pointerup'&&Math.abs(distance)>24?distance>0:expanded);
+ }
+ handle.addEventListener('pointerup',endDrag);
+ handle.addEventListener('pointercancel',endDrag);
+ handle.addEventListener('lostpointercapture',endDrag);
+ handle.addEventListener('click',event=>{
+  if(ignoreClick&&event.detail!==0){ignoreClick=false;return;}
+  settle(!expanded);
+ });
+}
+function mapPage({fit=false}={}){const list=filteredPlaces();if(map&&$('#leaflet-map')&&state.view==='map'){$('#map-sheet-content').innerHTML=mapSheetContent(list);$('.map-sheet-count').textContent=list.length;updateMapMarkers(list);if(fit)fitMapResults(list);return}disposeMap();layout(`<main class="map-page"><div class="map-shell ${state.view==='map'?'map-with-sheet':''}"><aside class="map-filters">${state.view==='map'?`<button type="button" class="map-sheet-handle" aria-expanded="false" aria-controls="map-sheet-content"><span class="map-sheet-grip" aria-hidden="true"></span><span>${state.lang==='en'?'Explore places':'探索地點'}</span><span class="map-sheet-count">${list.length}</span></button><div id="map-sheet-content">${mapSheetContent(list)}</div>`:mapFilters(list)}</aside><section class="map-stage ${state.view==='list'?'list-mode':''}">${state.view==='map'?`<div id="leaflet-map"></div>${mapLegend()}<aside class="map-place-panel" aria-label="${state.lang==='en'?'Selected place':'地點資訊'}" aria-hidden="true" inert></aside><div class="map-empty" ${list.length?'hidden':''}>${state.lang==='en'?'No places match these filters. Try another category.':'暫時沒有符合的地點，試試其他分類。'}</div>`:`<div class="place-list">${list.map(placeCard).join('')||`<p class="map-list-empty">${state.lang==='en'?'No matching places.':'暫時沒有符合的地點。'}</p>`}</div>`}</section></div></main>`,{showFooter:false});if(state.view==='map'){initMapSheet();initMap(list)}}
 function placePhoto(p,{className='',decorative=false}={}){
  const classAttr=className?` class="${className}"`:'';
- if(p.img)return `<img${classAttr} src="${esc(p.img)}" alt="${decorative?'':esc(loc(p,'name','en'))}">`;
+ if(p.img)return `<img${classAttr}${decorative?' loading="lazy"':''} src="${esc(p.img)}" alt="${decorative?'':esc(loc(p,'name','en'))}">`;
  return `<span class="place-photo-missing ${className}">${state.lang==='en'?'Photo unavailable':'暫無實景照片'}</span>`;
 }
 function placeCard(p){return `<a class="place-card" href="#place/${encodeURIComponent(p.id)}">${placePhoto(p,{decorative:true})}<div><small>${esc(mapLabel(p.area))} · ${esc(mapLabel(p.cat))}</small><h3>${esc(loc(p,'name','en'))}</h3><p>${esc(loc(p,'desc','desc_en'))}</p><span>${(p.tags||[]).map(t=>`<i>${esc(mapLabel(t))}</i>`).join('')}</span></div>${I('arrow')}</a>`}
 function mapPlaceContent(p){const c=mapCategories[p.cat]||mapCategories['去'];return `<button class="map-place-close" data-action="close-map-place" aria-label="${state.lang==='en'?'Close place details':'關閉地點資訊'}">${I('close',20)}</button><div class="map-place-content">${placePhoto(p,{className:'map-place-photo'})}<div class="map-place-body"><div class="map-place-meta"><span class="map-place-category" style="--category-color:${c.color}">${I(c.icon,16)} ${esc(mapLabel(p.cat))}</span><span>${esc(mapLabel(p.area))}</span></div><h2>${esc(loc(p,'name','en'))}</h2><p class="map-place-address">${I('pin',17)}<span>${esc(loc(p,'address','address_en'))}</span></p><p class="map-place-description">${esc(loc(p,'desc','desc_en'))}</p>${p.tags?.length?`<div class="map-place-tags">${p.tags.map(t=>`<span>${esc(mapLabel(t))}</span>`).join('')}</div>`:''}<a class="map-place-link" href="#place/${encodeURIComponent(p.id)}">${state.lang==='en'?'Discover this place':'認識這個地方'} ${I('arrow',18)}</a></div></div>`}
-function selectMapPlace(id,{pan=true,focus=false}={}){const p=state.places.find(p=>p.id===id),panel=$('.map-place-panel');if(!p||!panel)return;const changing=panel.classList.contains('is-open')&&selectedPlaceId!==id;selectedPlaceId=id;panel.innerHTML=mapPlaceContent(p);panel.inert=false;panel.setAttribute('aria-hidden','false');panel.classList.add('is-open');for(const [key,marker]of placeMarkers){const el=marker.getElement();el?.classList.toggle('is-selected',key===id);el?.setAttribute('aria-pressed',String(key===id));marker.setZIndexOffset(key===id?1000:0)}if(changing){const content=$('.map-place-content',panel);content.animate([{opacity:.35,transform:reducedMotion()?'none':'translateY(5px)'},{opacity:1,transform:'none'}],{duration:180,easing:'cubic-bezier(0.23, 1, 0.32, 1)'})}if(pan&&map){const compact=window.matchMedia('(max-width:760px)').matches;map.panInside([p.lat,p.lng],{paddingTopLeft:[50,50],paddingBottomRight:compact?[50,320]:[panel.offsetWidth+60,70],animate:!reducedMotion(),duration:.25})}if(focus)$('.map-place-close',panel)?.focus({preventScroll:true})}
+function selectMapPlace(id,{pan=true,focus=false}={}){const p=state.places.find(p=>p.id===id),panel=$('.map-place-panel');if(!p||!panel)return;const changing=panel.classList.contains('is-open')&&selectedPlaceId!==id;selectedPlaceId=id;panel.innerHTML=mapPlaceContent(p);panel.inert=false;panel.setAttribute('aria-hidden','false');panel.classList.add('is-open');for(const [key,marker]of placeMarkers){const el=marker.getElement();el?.classList.toggle('is-selected',key===id);el?.setAttribute('aria-pressed',String(key===id));marker.setZIndexOffset(key===id?1000:0)}if(changing){const content=$('.map-place-content',panel);content.animate([{opacity:.35,transform:reducedMotion()?'none':'translateY(5px)'},{opacity:1,transform:'none'}],{duration:180,easing:'cubic-bezier(0.23, 1, 0.32, 1)'})}if(pan&&map){const compact=window.matchMedia('(max-width:760px)').matches;map.panInside([p.lat,p.lng],{paddingTopLeft:[50,50],paddingBottomRight:compact?[50,Math.min(panel.offsetHeight+24,Math.round(map.getSize().y*.68))]:[panel.offsetWidth+60,70],animate:!reducedMotion(),duration:.25})}if(focus)$('.map-place-close',panel)?.focus({preventScroll:true})}
 function closeMapPlace({restoreFocus=false}={}){const previous=selectedPlaceId;selectedPlaceId='';const panel=$('.map-place-panel');if(panel){panel.classList.remove('is-open');panel.inert=true;panel.setAttribute('aria-hidden','true')}for(const marker of placeMarkers.values()){marker.getElement()?.classList.remove('is-selected');marker.getElement()?.setAttribute('aria-pressed','false');marker.setZIndexOffset(0)}if(restoreFocus)placeMarkers.get(previous)?.getElement()?.focus({preventScroll:true})}
 const mapPinArtwork={
  '食':['#ed9b36','<path fill="#b86c30" d="M3 12h18a9 9 0 0 1-18 0Z"/><path fill="#e8ab52" d="M3 12h18v2H3z"/><path fill="#668540" d="M12 12c-5 0-7-2-7-6 4 0 7 2 7 6Zm0 0c0-5 3-7 7-8 0 5-2 8-7 8Z"/><path fill="#75492f" d="M8 20h8v1H8z"/>'],
@@ -115,6 +164,10 @@ function initMap(list){
  const el=$('#leaflet-map');if(!el||!window.L)return;
  map=L.map(el,{zoomControl:false,dragging:true,touchZoom:true,scrollWheelZoom:!window.matchMedia('(pointer:coarse), (max-width:760px)').matches,wheelDebounceTime:30,wheelPxPerZoomLevel:100,minZoom:3,maxZoom:19,zoomAnimation:!reducedMotion(),fadeAnimation:!reducedMotion()}).setView([22.178,113.548],13);
  const currentMap=map,key=state.config.maptilerKey;el.dataset.zoom=String(currentMap.getZoom());
+ const sizeObserver=new ResizeObserver(()=>currentMap.invalidateSize({animate:false,debounceMoveend:true}));
+ sizeObserver.observe(el);
+ currentMap.once('unload',()=>sizeObserver.disconnect());
+
  const zoom=L.control.zoom({position:'topright',zoomInText:I('plus',20),zoomOutText:I('minus',20),zoomInTitle:state.lang==='en'?'Zoom in':'放大地圖',zoomOutTitle:state.lang==='en'?'Zoom out':'縮小地圖'}).addTo(map);
  const controls=zoom.getContainer();
  controls.addEventListener('pointerdown',e=>{const button=e.target.closest('a');if(button&&!button.classList.contains('leaflet-disabled')){button.classList.add('is-pressed');clearTimeout(button.pressTimer);button.pressTimer=setTimeout(()=>button.classList.remove('is-pressed'),160)}});
