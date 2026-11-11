@@ -323,7 +323,7 @@ button,a,input,select,textarea { -webkit-tap-highlight-color:transparent; }
  .category-copy { left:12px; }
  .category-copy small { font-size:12px;max-width:100%;padding-right:12px; }
  .category-tile { height:232px; }
- .map-place-content { grid-template-columns:88px minmax(0,1fr); }
+ .map-place-content { grid-template-columns:minmax(0,1fr); }
  .map-place-body { padding:20px 12px; }
  .map-place-body h2 { font-size:22px; }
  .map-place-meta { font-size:12px; }
@@ -895,6 +895,11 @@ h1,h2,h3,.brand strong,.category-copy strong,.story-horizontal strong { font-fam
  .map-stage #leaflet-map { height:100%;min-height:0; }
  .map-stage.list-mode { height:auto; }
  .map-place-panel { max-height:calc(100% - 150px);bottom:76px; }
+ .map-place-content { display:block; }
+ .map-place-photo { display:block;width:100%;height:clamp(140px,24svh,200px);min-height:0;object-fit:cover; }
+ .map-place-photo.place-photo-missing { display:grid;place-items:center; }
+ .map-place-body { padding:18px 20px 20px; }
+
  .back-to-top { right:16px;bottom:max(16px,env(safe-area-inset-bottom));width:44px;height:44px;min-height:44px; }
 }
 @media(prefers-reduced-motion:reduce) { .back-to-top { transition:none;transform:none; } }
