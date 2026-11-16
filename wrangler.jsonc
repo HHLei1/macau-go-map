@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "green-go-macau",
+  "name": "macau-go-map",
   "main": "src/worker.js",
   "compatibility_date": "2026-09-21",
   "assets": {
@@ -11,15 +11,15 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "green-go-macau-db",
-      "database_id": "a48703df-9336-47a6-b536-ef00555d47d1",
+      "database_name": "macau-go-map-db",
+      "database_id": "b098f25d-69b0-4cd4-b8e6-9b154ec468b1",
       "migrations_dir": "migrations"
     }
   ],
   "kv_namespaces": [
     {
       "binding": "MEDIA",
-      "id": "6f219993911a4d598390f9cec7b1746b"
+      "id": "945fcffc220d4e2fba4a01fcc1710018"
     }
   ],
   "vars": {
