@@ -1,10 +1,12 @@
 /* Calm street cartography. Keep geographic data separate from visual styling. */
 window.GreenGoMapStyle = {
   async create(key, language) {
-    const url = key
-      ? `https://api.maptiler.com/maps/streets-v2/style.json?key=${encodeURIComponent(key)}`
-      : 'https://tiles.openfreemap.org/styles/positron';
-    const response = await fetch(url);
+    let response = key
+      ? await fetch(`https://api.maptiler.com/maps/streets-v2/style.json?key=${encodeURIComponent(key)}`).catch(() => null)
+      : null;
+    if (!response || !response.ok) {
+      response = await fetch('https://tiles.openfreemap.org/styles/positron');
+    }
     if (!response.ok) throw new Error('Map style unavailable');
     const style = await response.json();
     const colors = {land:'#f3ece3', urban:'#ece5e3', building:'#e1dade', road:'#d6d3d9', edge:'#c9c5cc', minor:'#faf6ef', park:'#d0e4b3', water:'#92d2e7', text:'#65626b'};

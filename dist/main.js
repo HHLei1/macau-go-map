@@ -436,7 +436,7 @@ function initMap(list){
  map.on('zoomstart',()=>el.classList.add('is-zooming'));
  map.on('zoomend',()=>{el.dataset.zoom=String(currentMap.getZoom());el.classList.remove('is-zooming');updateMapMarkers(filteredPlaces())});
  markerLayer=L.layerGroup().addTo(map);updateMapMarkers(list);
- const fallback=()=>{if(map!==currentMap)return;L.tileLayer(key?`https://api.maptiler.com/maps/basic-v2/{z}/{x}/{y}.png?key=${encodeURIComponent(key)}`:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:key?'© <a href="https://www.maptiler.com/copyright/" target="_blank" rel="noopener">MapTiler</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>':'© OpenStreetMap'}).addTo(currentMap)};
+ const fallback=()=>{if(map!==currentMap)return;L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(currentMap)};
  if(window.maplibregl&&L.maplibreGL&&window.GreenGoMapStyle){
   GreenGoMapStyle.create(key,state.lang).then(style=>{
    if(map!==currentMap)return;
