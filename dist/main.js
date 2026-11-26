@@ -34,9 +34,20 @@ const icons={
 };
 const I=(n,s=20)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[n]||icons.arrow}</svg>`;
 
-const zh={nav:['首頁','地圖','主題路線','人物故事','參與投稿','關於我們'],explore:'探索地圖',read:'閱讀故事',more:'查看全部故事',places:'個地點',all:'全部',search:'搜尋地點、活動、文章或關鍵字',filters:['生活入口','生態標籤','地區'],routesTitle:'主題路線',routesIntro:'從日常出發，跟著地方和人的故事慢慢走。每條路線都是一次重新認識澳門的機會。',storiesTitle:'人物／地方故事',storiesIntro:'看見人，才看見地方的力量。這些是在澳門街巷裡，默默讓城市變得更好的人。',aboutTitle:'關於綠門GO',aboutBody:'我們以澳門的地方、人物與行動為起點，透過地圖讓更多人看見日常生活中的改變力量。每一個小小的選擇，都能讓城市更綠色、更宜居。'};
-const en={nav:['Home','Map','Routes','Stories','Contribute','About'],explore:'Explore the map',read:'Read the story',more:'All stories',places:'places',all:'All',search:'Search places, activities, stories or keywords',filters:['Everyday entry','Ecology tags','Area'],routesTitle:'Routes',routesIntro:'Follow local places and people at a slower pace. Every route is a chance to meet Macau again.',storiesTitle:'People & place stories',storiesIntro:'See the people and you begin to see the power of place — the neighbours quietly making Macau better.',aboutTitle:'About Green GO',aboutBody:'We begin with Macau’s places, people and local action. This map helps more people notice the quiet changes already happening in everyday life. Every thoughtful choice can make the city greener and more liveable.'};
-const fallbackSite={heroTitleZh:'從一個地方，\n遇見更好的日常。',heroTitleEn:'Begin with a place.\nMeet a better everyday life.',heroBodyZh:'帶入永續旅遊、融入生活、在地探索，走進更綠色、更關懷與更有韌性的日常。',heroBodyEn:'Travel slowly, live locally and discover a greener, kinder and more resilient Macau.',heroImage:'assets/flat-waterfront.webp',heroArticleId:'story-afa',searchPlaceholderZh:'搜尋地點、活動、文章或關鍵字',searchPlaceholderEn:'Search places, activities, stories or keywords',hotSearchesZh:['修補日常','澳門滋味','親近自然'],hotSearchesEn:['Repair culture','Local flavours','Urban nature'],catsTitleZh:'六種方式，走進綠色澳門',catsTitleEn:'Six ways into a greener Macau',catsBodyZh:'從吃一頓飯、修一雙鞋開始。選一個入口，地圖會帶你找到附近的好地方。',catsBodyEn:'Start with a meal or a mended shoe. Pick an entry point and the map will lead you to good places nearby.',categories:[],routesTitleZh:'跟著路線，慢慢走',routesTitleEn:'Slow routes through the city',routesBodyZh:'從日常出發，跟著地方和人的故事慢慢走。每條路線都是一次重新認識澳門的機會。',routesBodyEn:'Follow local places and people at a slower pace. Every route is a chance to meet Macau again.',featureTitleZh:'阿發修鞋店',featureTitleEn:'A Fa Shoe Repair',featureImage:'assets/flat-afa.webp',featureArticleId:'story-afa',aboutTitleZh:'關於綠門GO',aboutTitleEn:'About Green GO',aboutBodyZh:'我們以澳門的地方、人物與行動為起點，透過地圖讓更多人看見日常生活中的改變力量。每一個小小的選擇，都能讓城市更綠色、更宜居。',aboutBodyEn:'We begin with Macau’s places, people and local action. This map helps more people notice the quiet changes already happening in everyday life. Every thoughtful choice can make the city greener and more liveable.',aboutImage:'assets/flat-waterfront.webp',contactEmail:'G-GW@GREEN-GATEWAY.ORG',contactWebsite:'https://green-gateway.org',contactPhone:'+853 2859 1162',contactFax:'+853 2893 1085',contactAddressZh:'澳門崗頂前地4號',contactAddressEn:'Largo de Santo Agostinho 4 — Macau S.A.R',footerTaglineZh:'從澳門的地方與人物出發，探索更綠色的日常。',footerTaglineEn:'Start from Macau’s places and people, and discover a greener everyday life.',footerNoteZh:'一座城，很多種綠色生活。',footerNoteEn:'One city, many ways to live green.'};
+const zh={nav:['首頁','地圖','主題路線','人物故事','投稿／評價','關於我們'],explore:'探索地圖',read:'閱讀故事',more:'查看全部故事',places:'個地點',all:'全部',search:'搜尋地點、活動、文章或關鍵字',filters:['生活入口','生態標籤','地區'],routesTitle:'主題路線',routesIntro:'從日常出發，跟著地方和人的故事慢慢走。每條路線都是一次重新認識澳門的機會。',storiesTitle:'人物／地方故事',storiesIntro:'看見人，才看見地方的力量。這些是在澳門街巷裡，默默讓城市變得更好的人。',aboutTitle:'關於綠門GO',aboutBody:'我們以澳門的地方、人物與行動為起點，透過地圖讓更多人看見日常生活中的改變力量。每一個小小的選擇，都能讓城市更綠色、更宜居。'};
+const en={nav:['Home','Map','Routes','Stories','Contribute / Review','About'],explore:'Explore the map',read:'Read the story',more:'All stories',places:'places',all:'All',search:'Search places, activities, stories or keywords',filters:['Everyday entry','Ecology tags','Area'],routesTitle:'Routes',routesIntro:'Follow local places and people at a slower pace. Every route is a chance to meet Macau again.',storiesTitle:'People & place stories',storiesIntro:'See the people and you begin to see the power of place — the neighbours quietly making Macau better.',aboutTitle:'About Green GO',aboutBody:'We begin with Macau’s places, people and local action. This map helps more people notice the quiet changes already happening in everyday life. Every thoughtful choice can make the city greener and more liveable.'};
+const fallbackSite={heroTitleZh:'從一個地方，\n遇見更好的日常。',heroTitleEn:'Begin with a place.\nMeet a better everyday life.',heroBodyZh:'帶入永續旅遊、融入生活、在地探索，走進更綠色、更關懷與更有韌性的日常。',heroBodyEn:'Travel slowly, live locally and discover a greener, kinder and more resilient Macau.',heroImage:'assets/flat-waterfront.webp',heroArticleId:'story-afa',searchPlaceholderZh:'搜尋地點、活動、文章或關鍵字',searchPlaceholderEn:'Search places, activities, stories or keywords',hotSearchesZh:['修補日常','澳門滋味','親近自然'],hotSearchesEn:['Repair culture','Local flavours','Urban nature'],catsTitleZh:'六種方式，走進綠色澳門',catsTitleEn:'Six ways into a greener Macau',catsBodyZh:'從吃一頓飯、修一雙鞋開始。選一個入口，地圖會帶你找到附近的好地方。',catsBodyEn:'Start with a meal or a mended shoe. Pick an entry point and the map will lead you to good places nearby.',categories:[],routesTitleZh:'跟著路線，慢慢走',routesTitleEn:'Slow routes through the city',routesBodyZh:'從日常出發，跟著地方和人的故事慢慢走。每條路線都是一次重新認識澳門的機會。',routesBodyEn:'Follow local places and people at a slower pace. Every route is a chance to meet Macau again.',expTitleZh:'用戶體驗',expTitleEn:'Community Voices',expBodyZh:'聽聽在澳門生活與散步的人，怎麼用這張地圖遇見日常裡的綠意。',expBodyEn:'How neighbours and explorers use the map to find greener everyday moments in Macau.',experiences:[
+ {id:'exp-1',author:'@momo_macau',textZh:'週末跟著綠門GO地圖去望廈吃蔬食，本來只是想隨便找間安靜的小店吃頓午飯，沒想到老闆娘親自介紹每一道菜用的本地農場時蔬，還分享了他們減少廚餘和不使用即棄餐盒的做法。坐在窗邊看著老區街景，突然覺得澳門的慢生活其實一直都在，只是以前走得太快沒發現。',textEn:'Followed Green GO to Mong Ha for a plant-based lunch. The owner walked us through the local farm produce and their zero-waste kitchen habits—such a warm, unhurried afternoon.',image:'assets/flat-cafe.webp'},
+ {id:'exp-2',author:'@jenny_c',textZh:'介面很乾淨，在手機上找氹仔的零包裝雜貨店超方便，點一下就能直接導航過去！',textEn:'Clean interface—found a zero-waste shop in Taipa and navigated straight there.',image:''},
+ {id:'exp-3',author:'@coloane_breeze',textZh:'照著「城市裡還有自然嗎？」走了一趟龍環葡韻濕地，第一次在市區旁靜靜看到這麼多白鷺在紅樹林間覓食。',textEn:'Walked the Taipa wetland route and watched egrets right beside the city.',image:'assets/flat-coast.webp'},
+ {id:'exp-4',author:'@ah_fai_walk',textZh:'以前總覺得皮鞋穿舊或鞋底開膠就該丟掉再買一雙，後來在地圖上看到亞婆井附近還有一位老師傅堅持手工補鞋。那天把穿了五年的牛津鞋拿過去，師傅仔細檢查縫線後花了半小時細心修補，還教我平常怎麼上油保養。拿回修好的鞋那一刻真的很有溫度，修補的不只是物件，也是這座城市惜物的人情味。',textEn:'Used to toss worn-out shoes until I found an old cobbler near Lilau Square on the map. He repaired my five-year-old pair in half an hour and taught me how to care for the leather.',image:''},
+ {id:'exp-5',author:'@kit_cycling',textZh:'上週騎單車經過筷子基時後輪突然漏氣，急忙打開地圖搜尋「修」，果然找到轉角處的單車維修點。師傅十幾分鐘就幫我補好內胎，還順手調校了煞車鬆緊，收費公道又不用換掉整條輪胎，環保又省錢。',textEn:'Got a flat tyre near Fai Chi Kei and found a neighbourhood bike repair spot within minutes—patched and tuned in fifteen minutes without wasting a new tube.',image:'assets/flat-repairbike.webp'},
+ {id:'exp-6',author:'@sara_reads',textZh:'很喜歡網站裡的人物故事專訪，本來只是想查幾個環保店舖的地址，結果一口氣把阿發師傅、社區菜園和青年行動的文章全讀完了。原來澳門的街巷裡藏著這麼多默默堅持永續生活的小人物，他們不喊口號，只是日復一日把一件小事做好。每次心情浮躁的時候讀一讀，都會覺得這座城市還有很多值得探索和守護的角落。',textEn:'Came for store addresses and ended up reading every single story. Behind Macau’s busy streets are quiet makers and neighbours keeping sustainability alive every day without fanfare.',image:''},
+ {id:'exp-7',author:'@lucas_mo',textZh:'帶外地朋友用綠門GO逛下環街市和舊城區，比一般旅遊書更有生活感，朋友超喜歡。',textEn:'Showed visiting friends around Barra Market using Green GO—felt like the real Macau.',image:'assets/flat-market.webp'},
+ {id:'exp-8',author:'@eco_student',textZh:'學校環保社團的週末考察路線就是參考這裡設計的！',textEn:'Our school eco-club designed our weekend walk straight from these curated routes!',image:''},
+ {id:'exp-9',author:'@patane_oldstreet',textZh:'最近每天下班都會順路打開地圖看看附近有沒有沒去過的綠色小店，已經在「投稿／評價」推薦了一家沙梨頭的舊物選品店，希望之後能看到更多路環和離島的地點加入！',textEn:'I check the map after work for new neighbourhood spots and just submitted a vintage shop in Patane via Contribute / Review. Hoping to see more Coloane places soon!',image:''},
+ {id:'exp-10',author:'@yoyo_taipa',textZh:'自備玻璃罐去買散裝乾貨和茶葉真的很有儀式感，老闆還會多送一小匙試飲的花茶。算下來一個月少用了幾十個塑膠袋，家裡的儲物櫃也變得整齊又治癒，會一直支持下去。',textEn:'Bringing my own jars for dry goods and loose-leaf tea feels great—cut dozens of plastic bags a month and my pantry has never looked tidier.',image:'assets/flat-shop.webp'}
+],featureTitleZh:'阿發修鞋店',featureTitleEn:'A Fa Shoe Repair',featureImage:'assets/flat-afa.webp',featureArticleId:'story-afa',aboutTitleZh:'關於綠門GO',aboutTitleEn:'About Green GO',aboutBodyZh:'我們以澳門的地方、人物與行動為起點，透過地圖讓更多人看見日常生活中的改變力量。每一個小小的選擇，都能讓城市更綠色、更宜居。',aboutBodyEn:'We begin with Macau’s places, people and local action. This map helps more people notice the quiet changes already happening in everyday life. Every thoughtful choice can make the city greener and more liveable.',aboutImage:'assets/flat-waterfront.webp',contactEmail:'G-GW@GREEN-GATEWAY.ORG',contactWebsite:'https://green-gateway.org',contactPhone:'+853 2859 1162',contactFax:'+853 2893 1085',contactAddressZh:'澳門崗頂前地4號',contactAddressEn:'Largo de Santo Agostinho 4 — Macau S.A.R',footerTaglineZh:'從澳門的地方與人物出發，探索更綠色的日常。',footerTaglineEn:'Start from Macau’s places and people, and discover a greener everyday life.',footerNoteZh:'一座城，很多種綠色生活。',footerNoteEn:'One city, many ways to live green.'};
 const state={page:'home',id:'',lang:localStorage.getItem('gg-lang')==='en'?'en':'zh',places:[],articles:[],routes:[],site:fallbackSite,config:{},cat:'全部',area:'全部',query:'',view:'map',menu:false,mapFiltersOpen:false,step:1,booted:false,contribution:{type:'',name:'',area:'',address:'',tags:[],description:'',contact:'',image:'',uploadGrant:''}};
 const app=$('#app');let map,markerLayer;const placeMarkers=new Map();let selectedPlaceId='';
 const T=()=>state.lang==='en'?en:zh;
@@ -179,7 +190,7 @@ function home(){
    <div class="cat-rail">${categories.map((c,i)=>`<a href="#map?cat=${encodeURIComponent(c.key)}" class="cat-card" data-reveal style="--i:${i};--c:${mapCategories[c.key]?.color||'#28CD41'};--c2:${mapPinArtwork[c.key]?.[0]||'#28CD41'}">
      <img src="${esc(imagePath(c.image))}" alt="" loading="lazy">
      <span class="cat-shade"></span>
-     <span class="cat-top"><span class="cat-icon">${categoryArtwork(c.key,22)}</span><span class="cat-count">${counts[c.key]||0} ${T().places}</span></span>
+     <span class="cat-top"><span class="cat-count">${counts[c.key]||0} ${T().places}</span></span>
      <span class="cat-body"><strong>${esc(state.lang==='en'?c.titleEn:c.titleZh)}</strong>${state.lang==='en'?'':`<small>${esc(c.titleEn||mapCategories[c.key]?.en||'')}</small>`}<em>${esc(state.lang==='en'?c.subtitleEn:c.subtitleZh)}</em></span>
      <span class="cat-go">${I('arrowUpRight',18)}</span>
     </a>`).join('')}</div>
@@ -189,7 +200,52 @@ function home(){
   ${sectionHead(esc(S('routesTitle')),{intro:esc(S('routesBody')),href:'#routes',linkLabel:tx('全部路線','All routes')})}
   <div class="route-row">${routes.map((r,i)=>routeCard(r,i)).join('')}</div>
  </div></section>`:''}
+ ${experiencesSection()}
  </main>`);
+}
+const clipText=(v,max=50)=>{const s=String(v||'').trim();return s.length>max?`${s.slice(0,max).trimEnd()}...`:s};
+function expList(){return (state.site.experiences?.length?state.site.experiences:fallbackSite.experiences)||[]}
+function experiencesSection(){
+ const list=expList();
+ if(!list.length)return '';
+ return `<section class="home-section exp-section" aria-labelledby="exp-title"><div class="container">
+  ${sectionHead(`<span id="exp-title">${esc(S('expTitle'))}</span>`,{intro:esc(S('expBody')),href:'#contribute',linkLabel:tx('分享你的評價或建議','Share a review or suggestion')})}
+  <div class="exp-bento">${list.map((item,i)=>{const full=state.lang==='en'?(item.textEn||item.textZh):(item.textZh||item.textEn);const preview=item.image?clipText(full,50):full;return `<button type="button" class="exp-card exp-slot-${(i%10)+1} ${item.image?'has-img':'no-img'}" data-exp-idx="${i}" data-reveal style="--i:${i%6}">
+   ${item.image?`<div class="exp-media"><img src="${esc(item.image)}" alt="" loading="lazy"></div>`:''}
+   <div class="exp-body">
+    <p class="exp-quote">${esc(preview)}</p>
+    <div class="exp-foot"><span class="exp-avatar" aria-hidden="true">${esc((item.author||'V').replace(/^@/,'').slice(0,1).toUpperCase())}</span><strong>${esc(item.author||'@visitor')}</strong><span class="exp-more" aria-hidden="true">${I('arrowUpRight',15)}</span></div>
+   </div>
+  </button>`}).join('')}</div>
+ </div></section>`;
+}
+let expLastTrigger=null;
+function openExpModal(idx){
+ const item=expList()[idx];if(!item)return;
+ expLastTrigger=document.activeElement;
+ let modal=$('#exp-modal');
+ if(!modal){modal=document.createElement('div');modal.id='exp-modal';modal.className='exp-modal';modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true');document.body.appendChild(modal)}
+ const full=state.lang==='en'?(item.textEn||item.textZh):(item.textZh||item.textEn);
+ modal.innerHTML=`<div class="exp-modal-card" role="document">
+  <button type="button" class="exp-modal-close" data-action="close-exp-modal" aria-label="${tx('關閉','Close')}">${I('close',18)}</button>
+  ${item.image?`<div class="exp-modal-media"><img src="${esc(item.image)}" alt=""></div>`:''}
+  <div class="exp-modal-body">
+   <div class="exp-foot"><span class="exp-avatar" aria-hidden="true">${esc((item.author||'V').replace(/^@/,'').slice(0,1).toUpperCase())}</span><strong>${esc(item.author||'@visitor')}</strong></div>
+   <p class="exp-modal-quote">${esc(full)}</p>
+  </div>
+ </div>`;
+ modal.hidden=false;
+ requestAnimationFrame(()=>modal.classList.add('is-open'));
+ document.documentElement.classList.add('modal-open');
+ $('.exp-modal-close',modal)?.focus();
+}
+function closeExpModal(){
+ const modal=$('#exp-modal');if(!modal||modal.hidden)return;
+ modal.classList.remove('is-open');
+ document.documentElement.classList.remove('modal-open');
+ setTimeout(()=>{if(!modal.classList.contains('is-open'))modal.hidden=true},280);
+ if(expLastTrigger?.focus)expLastTrigger.focus();
+ expLastTrigger=null;
 }
 const macauLandPaths=[
  "M187.0,63.5 L196.5,95.9 L201.0,100.3 L201.7,112.4 L252.9,97.4 L252.0,94.1 L261.0,91.5 L304.1,130.8 L312.3,132.8 L315.7,138.6 L316.1,152.6 L321.5,155.2 L317.5,130.1 L333.6,122.3 L337.4,123.6 L342.0,118.7 L350.4,115.4 L353.9,117.3 L361.1,143.8 L364.7,146.0 L372.3,144.9 L362.9,113.7 L360.0,76.2 L364.2,64.1 L302.0,39.3 L299.5,40.7 L294.3,38.6 L294.8,32.5 L275.3,35.7 L255.4,33.1 L249.6,37.3 L239.4,57.4 L234.5,58.7 L217.7,54.8 L198.3,55.5 L187.0,63.5 Z",
@@ -467,14 +523,14 @@ function placePage(){
  const nearby=state.places.filter(x=>x.id!==p.id&&x.cat===p.cat&&x.area===p.area&&x.img).slice(0,3);
  layout(`<main class="detail-page place-detail" style="--c:${color}">${detailNav(backHref,backLabel)}
  <section class="container place-hero">
-  <div class="place-media" data-reveal>${placePhoto(p)}<span class="place-badge">${categoryArtwork(p.cat,26)}</span></div>
+  <div class="place-media" data-reveal>${placePhoto(p)}</div>
   <div class="place-summary" data-reveal style="--i:1">
    <p class="detail-category"><span class="dot"></span>${esc(mapLabel(p.cat))}${p.area?` · ${esc(mapLabel(p.area))}`:''}</p>
    <h1>${esc(loc(p,'name','en'))}</h1>
    <p class="lead">${esc(description)}</p>
    ${p.tags?.length?`<div class="tags">${p.tags.map(t=>`<span>${esc(mapLabel(t))}</span>`).join('')}</div>`:''}
    <dl class="info-list"><div><dt>${I('pin')}<span>${english?'Address':'地址'}</span></dt><dd>${esc(loc(p,'address','address_en')||(english?'Not provided':'未提供'))}</dd></div>${p.hours?`<div><dt>${I('clock')}<span>${english?'Hours':'營業時間'}</span></dt><dd>${esc(loc(p,'hours','hours_en'))}</dd></div>`:''}${p.phone?`<div><dt>${I('phone')}<span>${english?'Phone':'電話'}</span></dt><dd><a href="tel:${esc(p.phone.replace(/[^+0-9]/g,''))}">${esc(p.phone)}</a></dd></div>`:''}${placeWebsites(p,english)}</dl>
-   ${hasCoordinates(p)?`<a class="button" href="#map?place=${encodeURIComponent(p.id)}">${english?'View on map':'在地圖上查看'} ${I('map',18)}</a>`:`<p class="muted-note">${english?'Map location pending verification.':'地圖標點待確認。'}</p>`}
+   ${hasCoordinates(p)?`<a class="button" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${p.lat},${p.lng}`)}" target="_blank" rel="noopener noreferrer">${english?'Navigate in Google Maps':'在 Google 地圖導航'} ${I('arrowUpRight',18)}</a>`:`<p class="muted-note">${english?'Map location pending verification.':'地圖標點待確認。'}</p>`}
   </div>
  </section>
  ${story&&story!==description?`<section class="container reading-wrap"><article class="reading-body" data-reveal><h2>${english?'About this place':'認識這個地方'}</h2>${paragraphs(story)}</article></section>`:''}
@@ -533,7 +589,7 @@ function articlePage(){
 /* ───────────── Contribute ───────────── */
 function contributionLabels(){return state.lang==='en'?{steps:['Basic details','Location','Tags','More details','Complete'],title:'Recommend a great place in Macau.',intro:'Submit the details below for review.',next:'Next',back:'Back',submit:'Submit recommendation',note:'Your recommendation will be reviewed by an administrator before it appears publicly.',types:[['Place / Shop','map'],['Organization','people'],['Activity','clock'],['Person / Story','book'],['Other','leaf']],tags:['Eat','Shop','Repair','Explore','Learn','Join']}:{steps:['基本資料','地點資訊','分類標籤','補充說明','完成'],title:'推薦一個澳門的好地方。',intro:'填寫資料並提交，管理員審核後會公開顯示。',next:'下一步',back:'上一步',submit:'提交推薦',note:'推薦會先交由管理員審核，確認資料後才會公開顯示。',types:[['地點／店舖','map'],['機構／團體','people'],['活動','clock'],['人物／故事','book'],['其他','leaf']],tags:['食','買','修','去','學','參與']}}
 function contribute(){
- const l=contributionLabels();
+ const l=contributionLabels(),en=state.lang==='en';
  layout(`<main class="contribute-page"><div class="container contribute-shell">
  <header class="contribute-head" data-reveal>
   <h1>${esc(l.title)}</h1>
@@ -545,6 +601,28 @@ function contribute(){
   <div class="form-actions">${state.step>1&&state.step<5?`<button type="button" class="button ghost" data-action="contribution-back">${I('arrow',17)} ${l.back}</button>`:'<span></span>'}${state.step<5?`<button type="submit" class="button">${state.step===4?l.submit:l.next} ${I('arrow',17)}</button>`:`<a class="button" href="#map">${T().explore} ${I('arrow',17)}</a>`}</div>
  </form>
  <p class="form-note">${l.note}</p>
+ <section class="review-section" aria-labelledby="review-heading">
+  <div class="review-head">
+   <h2 id="review-heading">${en?'Share your review or suggestion':'分享你的評價或建議'}</h2>
+   <p>${en?'Leave your ID, a photo and a short message (up to 300 characters)':'留下你的 ID、一張圖片與心得評價（300 字以內）'}</p>
+  </div>
+  <form id="review-form" class="contribution-form review-form">
+   <div class="contribution-fields one-column">
+    <label>${en?'Your ID / Nickname':'留言 ID'}<input name="reviewId" maxlength="60" placeholder="${en?'Example: macau_walker':'例如：澳門散步者 / 你的 ID'}" required></label>
+    <label>${en?'Review (max 300 characters)':'評價正文（最多 300 字）'}
+     <textarea name="reviewText" rows="4" maxlength="300" placeholder="${en?'Write your thoughts or experience here…':'寫下你對這個地方或網站的感受與建議…'}" required></textarea>
+     <small class="char-count" id="review-char-count">0 / 300</small>
+    </label>
+    <label class="file-field">${en?'Upload photo (optional, 1 image)':'上傳圖片（選填，限一張）'}
+     <input name="reviewImage" type="file" accept="image/jpeg,image/png,image/webp">
+     <small>${en?'JPG, PNG or WebP, up to 5 MB.':'JPG、PNG 或 WebP，最多 5 MB。'}</small>
+    </label>
+    <div class="review-preview" id="review-preview" hidden><img alt=""></div>
+   </div>
+   <div class="form-actions review-actions"><span></span><button type="submit" class="button">${en?'Submit review':'送出評價'} ${I('arrow',17)}</button></div>
+   <div class="review-status" id="review-status" role="status" aria-live="polite" hidden></div>
+  </form>
+ </section>
  </div></main>`);
 }
 function contributionFields(l){const c=state.contribution,en=state.lang==='en';const typeValues=['地點／店舖','機構／團體','活動','人物／故事','其他'],tagValues=['食','買','修','去','學','參與'];
@@ -580,7 +658,7 @@ function notFound(){layout(`<main class="not-found container"><h1>${tx('這條�
 
 /* ───────────── Router ───────────── */
 function parseHash(){const raw=location.hash.slice(1)||'home';const [path,qs='']=raw.split('?');const [page,id='']=path.split('/');state.page=navKeys.includes(page)||['place','route','article'].includes(page)?page:'home';state.id=decodeURIComponent(id);const p=new URLSearchParams(qs);state.fromRoute=p.get('route')||'';state.mapPlace=p.get('place')||'';if(state.mapPlace){state.view='map';state.cat='全部';state.area='全部';state.query=''}if(state.page==='map'&&Object.hasOwn(mapCategories,p.get('cat'))){state.cat=p.get('cat');state.area='全部';state.query=''}}
-function draw(){disposeMap();parseHash();({home,map:mapPage,place:placePage,routes:routesPage,route:routePage,stories:storiesPage,article:articlePage,contribute,about}[state.page]||home)();document.documentElement.lang=state.lang==='en'?'en':'zh-Hant';document.documentElement.classList.toggle('nav-open',false);scrollTo(0,0)}
+function draw(){closeExpModal();disposeMap();parseHash();({home,map:mapPage,place:placePage,routes:routesPage,route:routePage,stories:storiesPage,article:articlePage,contribute,about}[state.page]||home)();document.documentElement.lang=state.lang==='en'?'en':'zh-Hant';document.documentElement.classList.toggle('nav-open',false);scrollTo(0,0)}
 function render(){
  if(state.booted&&document.startViewTransition&&!reducedMotion())document.startViewTransition(draw);
  else draw();
@@ -590,13 +668,23 @@ async function fetchJSON(url,fallback){try{const r=await fetch(url);if(!r.ok)thr
 async function init(){const [places,articles,routes,site,config]=await Promise.all([fetchJSON('/api/places',[]),fetchJSON('/api/articles',[]),fetchJSON('/api/routes',[]),fetchJSON('/api/site',fallbackSite),fetchJSON('/api/config',{})]);Object.assign(state,{places,articles,routes,site:{...fallbackSite,...site},config});render();document.documentElement.classList.add('is-ready')}
 function setMenu(open){state.menu=open;$('.main-nav')?.classList.toggle('open',open);document.documentElement.classList.toggle('nav-open',open);const button=$('.menu-button');button?.setAttribute('aria-expanded',String(open))}
 addEventListener('hashchange',()=>{state.menu=false;render()});
-document.addEventListener('input',e=>{if(e.target.closest('#contribution-form')){const f=new FormData(e.target.form);for(const key of ['type','name','area','address','description','contact'])if(f.has(key))state.contribution[key]=f.get(key);if(state.step===3)state.contribution.tags=f.getAll('tags')}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(state.menu){setMenu(false);$('.menu-button')?.focus()}else if(state.page==='map'&&selectedPlaceId)closeMapPlace({restoreFocus:true})}});
+document.addEventListener('input',e=>{
+ if(e.target.closest('#contribution-form')){const f=new FormData(e.target.form);for(const key of ['type','name','area','address','description','contact'])if(f.has(key))state.contribution[key]=f.get(key);if(state.step===3)state.contribution.tags=f.getAll('tags')}
+ if(e.target.name==='reviewText'){const len=e.target.value.length,counter=$('#review-char-count');if(counter)counter.textContent=`${len} / 300`}
+});
+document.addEventListener('change',e=>{
+ if(e.target.name==='reviewImage'){const file=e.target.files?.[0],box=$('#review-preview'),img=$('img',box);if(!box||!img)return;if(!file){box.hidden=true;img.removeAttribute('src');return}const r=new FileReader();r.onload=()=>{img.src=r.result;box.hidden=false};r.readAsDataURL(file)}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('#exp-modal')?.classList.contains('is-open'))closeExpModal();else if(state.menu){setMenu(false);$('.menu-button')?.focus()}else if(state.page==='map'&&selectedPlaceId)closeMapPlace({restoreFocus:true})}});
 document.addEventListener('mouseover',e=>{const card=e.target.closest('[data-place-card]');const id=card?.dataset.placeCard||'';for(const [key,marker]of placeMarkers)marker.getElement()?.classList.toggle('is-hover',key===id)});
 document.addEventListener('click',e=>{
+ const expCard=e.target.closest('[data-exp-idx]');
+ if(expCard){openExpModal(Number(expCard.dataset.expIdx));return}
+ if(e.target.id==='exp-modal'){closeExpModal();return}
  const a=e.target.closest('[data-action]'),f=e.target.closest('[data-filter]'),v=e.target.closest('[data-view]'),q=e.target.closest('[data-quick]'),card=e.target.closest('.map-with-sheet [data-place-card]');
  if(card&&!e.metaKey&&!e.ctrlKey&&focusPlaceOnMap(card.dataset.placeCard)){e.preventDefault();return}
  const action=a?.dataset.action;
+ if(action==='close-exp-modal')closeExpModal();
  if(action==='back-to-top')window.scrollTo({top:0,behavior:reducedMotion()?'instant':'smooth'});
  if(action==='route-stops'){e.preventDefault();$('#route-stops')?.scrollIntoView({behavior:reducedMotion()?'instant':'smooth',block:'start'})}
  if(action==='language'){state.lang=state.lang==='zh'?'en':'zh';localStorage.setItem('gg-lang',state.lang);render()}
@@ -611,5 +699,5 @@ document.addEventListener('click',e=>{
  if(v){state.view=v.dataset.view;mapPage()}
  if(q){state.query=q.dataset.quick;location.hash='map'}
 });
-document.addEventListener('submit',async e=>{if(e.target.matches('[data-search-form],[data-map-search]')){e.preventDefault();state.query=new FormData(e.target).get('q')||'';location.hash='map';if(state.page==='map')mapPage({fit:true})}if(e.target.id==='contribution-form'){e.preventDefault();const form=e.target,f=new FormData(form);if(state.step===1)state.contribution.type=f.get('type')||'';if(state.step===2){state.contribution.name=f.get('name')||'';state.contribution.area=f.get('area')||'';state.contribution.address=f.get('address')||''}if(state.step===3){state.contribution.tags=f.getAll('tags');if(!state.contribution.tags.length)return alert(state.lang==='en'?'Please select at least one tag.':'請至少選擇一個標籤。')}if(state.step===4){state.contribution.description=f.get('description')||'';state.contribution.contact=f.get('contact')||'';const button=form.querySelector('button[type=submit]');button.disabled=true;button.textContent=state.lang==='en'?'Submitting…':'正在提交…';try{const file=f.get('image');if(file?.size){if(file.size>5000000)throw new Error(state.lang==='en'?'The image must be under 5 MB.':'圖片不能超過 5 MB');const upload=await fetch('/api/upload?type=submission',{method:'POST',headers:{'Content-Type':file.type},body:file}),uploaded=await upload.json();if(!upload.ok)throw new Error(uploaded.error||'圖片上傳失敗');state.contribution.image=uploaded.url;state.contribution.uploadGrant=uploaded.uploadGrant||''}const r=await fetch('/api/submissions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(state.contribution)}),result=await r.json();if(!r.ok)throw new Error(result.error||'投稿未能送出');state.step=5;render()}catch(err){button.disabled=false;button.innerHTML=`${contributionLabels().submit} ${I('arrow',17)}`;alert(err.message)}return}state.step=Math.min(5,state.step+1);render()}});
+document.addEventListener('submit',async e=>{if(e.target.matches('[data-search-form],[data-map-search]')){e.preventDefault();state.query=new FormData(e.target).get('q')||'';location.hash='map';if(state.page==='map')mapPage({fit:true})}if(e.target.id==='review-form'){e.preventDefault();const form=e.target,f=new FormData(form),en=state.lang==='en',id=String(f.get('reviewId')||'').trim(),text=String(f.get('reviewText')||'').trim(),file=f.get('reviewImage'),button=form.querySelector('button[type=submit]'),status=$('#review-status');if(!id||!text)return;if(text.length>300)return alert(en?'Review must be 300 characters or fewer.':'評價正文不能超過 300 字。');button.disabled=true;button.textContent=en?'Submitting…':'正在送出…';status.hidden=true;try{let image='',uploadGrant='';if(file?.size){if(file.size>5000000)throw new Error(en?'The image must be under 5 MB.':'圖片不能超過 5 MB');const upload=await fetch('/api/upload?type=submission',{method:'POST',headers:{'Content-Type':file.type},body:file}),uploaded=await upload.json();if(!upload.ok)throw new Error(uploaded.error||'圖片上傳失敗');image=uploaded.url;uploadGrant=uploaded.uploadGrant||''}const r=await fetch('/api/submissions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'評價',name:id,area:'',address:'',tags:[],description:text,contact:id,image,uploadGrant})}),result=await r.json();if(!r.ok)throw new Error(result.error||'評價未能送出');form.reset();$('#review-char-count').textContent='0 / 300';$('#review-preview').hidden=true;status.hidden=false;status.className='review-status ok';status.textContent=en?'Thank you! Your review has been collected.':'謝謝你的評價！內容已同步收集至後台。'}catch(err){status.hidden=false;status.className='review-status err';status.textContent=err.message}finally{button.disabled=false;button.innerHTML=`${en?'Submit review':'送出評價'} ${I('arrow',17)}`}return}if(e.target.id==='contribution-form'){e.preventDefault();const form=e.target,f=new FormData(form);if(state.step===1)state.contribution.type=f.get('type')||'';if(state.step===2){state.contribution.name=f.get('name')||'';state.contribution.area=f.get('area')||'';state.contribution.address=f.get('address')||''}if(state.step===3){state.contribution.tags=f.getAll('tags');if(!state.contribution.tags.length)return alert(state.lang==='en'?'Please select at least one tag.':'請至少選擇一個標籤。')}if(state.step===4){state.contribution.description=f.get('description')||'';state.contribution.contact=f.get('contact')||'';const button=form.querySelector('button[type=submit]');button.disabled=true;button.textContent=state.lang==='en'?'Submitting…':'正在提交…';try{const file=f.get('image');if(file?.size){if(file.size>5000000)throw new Error(state.lang==='en'?'The image must be under 5 MB.':'圖片不能超過 5 MB');const upload=await fetch('/api/upload?type=submission',{method:'POST',headers:{'Content-Type':file.type},body:file}),uploaded=await upload.json();if(!upload.ok)throw new Error(uploaded.error||'圖片上傳失敗');state.contribution.image=uploaded.url;state.contribution.uploadGrant=uploaded.uploadGrant||''}const r=await fetch('/api/submissions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(state.contribution)}),result=await r.json();if(!r.ok)throw new Error(result.error||'投稿未能送出');state.step=5;render()}catch(err){button.disabled=false;button.innerHTML=`${contributionLabels().submit} ${I('arrow',17)}`;alert(err.message)}return}state.step=Math.min(5,state.step+1);render()}});
 init();
